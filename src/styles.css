@@ -274,3 +274,88 @@ body {
 .audio-bar:nth-child(3) { animation-delay: 0.3s; }
 .audio-bar:nth-child(4) { animation-delay: 0.45s; }
 .audio-bar:nth-child(5) { animation-delay: 0.2s; }
+
+/* Custom Wind-Swaying animations for Hanging Polaroids */
+@keyframes sway-even {
+  0% { transform: rotate(-2.5deg); transform-origin: top center; }
+  100% { transform: rotate(1.5deg); transform-origin: top center; }
+}
+
+@keyframes sway-odd {
+  0% { transform: rotate(2deg); transform-origin: top center; }
+  100% { transform: rotate(-2deg); transform-origin: top center; }
+}
+
+.animate-sway-even {
+  animation: sway-even 4s ease-in-out infinite alternate;
+}
+
+.animate-sway-odd {
+  animation: sway-odd 5s ease-in-out infinite alternate;
+}
+
+/* Horizontal scroll smooth scrolling behavior */
+.scroll-smooth-x {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fireflies drifting and pulsing animations */
+@keyframes drift {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+  50% { transform: translateY(-30px) translateX(20px); opacity: 0.9; }
+}
+
+.animate-drift-slow-1 {
+  animation: drift 7s ease-in-out infinite alternate;
+}
+
+.animate-drift-slow-2 {
+  animation: drift 9s ease-in-out infinite alternate-reverse;
+}
+
+.animate-drift-slow-3 {
+  animation: drift 8s ease-in-out infinite alternate;
+}
+
+/* ==================== SCATTERED POLAROID COLLAGE WALL ==================== */
+
+.polaroid-wrapper-0 { transform: rotate(-3.5deg) translateY(6px); }
+.polaroid-wrapper-1 { transform: rotate(2.8deg) translateY(-8px); }
+.polaroid-wrapper-2 { transform: rotate(-1.8deg) translateY(12px); }
+.polaroid-wrapper-3 { transform: rotate(3.2deg) translateY(-4px); }
+.polaroid-wrapper-4 { transform: rotate(-4deg) translateY(-10px); }
+.polaroid-wrapper-5 { transform: rotate(2deg) translateY(8px); }
+.polaroid-wrapper-6 { transform: rotate(-2.5deg) translateY(2px); }
+.polaroid-wrapper-7 { transform: rotate(3.8deg) translateY(-6px); }
+
+.polaroid-card-container {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.polaroid-group:hover .polaroid-card-container {
+  transform: rotate(0deg) translateY(-14px) scale(1.06) !important;
+  border-color: rgba(255, 77, 128, 0.55) !important;
+  box-shadow: 0 20px 45px -15px rgba(255, 77, 128, 0.5), 0 0 25px rgba(255, 77, 128, 0.25) !important;
+}
+
+.clothespin-clip {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.polaroid-group:hover .clothespin-clip {
+  transform: translateY(-8px) scale(1.15);
+}
+
+.polaroid-overlay {
+  opacity: 0;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(2px);
+}
+
+.polaroid-group:hover .polaroid-overlay {
+  opacity: 1;
+}
+
+
+

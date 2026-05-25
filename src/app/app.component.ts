@@ -9,6 +9,7 @@ interface TimelineEvent {
   text: string;
   photoKey: string;
   defaultSvg: string;
+  defaultImage?: string;
 }
 
 interface PhotoGalleryItem {
@@ -16,6 +17,7 @@ interface PhotoGalleryItem {
   photoKey: string;
   caption: string;
   defaultSvg: string;
+  defaultImage?: string;
 }
 
 @Component({
@@ -51,53 +53,84 @@ export class AppComponent implements OnInit, OnDestroy {
   timelineEvents: TimelineEvent[] = [
     {
       id: 1,
-      title: 'First Conversation',
-      date: '7 July 2024',
-      text: 'The day two strangers started becoming something beautiful.',
-      photoKey: 'photo_timeline_1',
-      defaultSvg: 'chat'
+      title: '💍 Proposal Moment',
+      date: '28 November 2024',
+      text: 'The moment our forever started.',
+      photoKey: 'photo_memory_1',
+      defaultSvg: 'ring',
+      defaultImage: 'assets/ChatGPT_Prapose.png'
     },
     {
       id: 2,
-      title: 'First Video Call',
-      date: '14 July 2024',
-      text: 'Seeing your smile for the first time felt special already.',
-      photoKey: 'photo_timeline_2',
-      defaultSvg: 'video'
+      title: '☕ Cafe Hand-Holding Conversation',
+      date: 'Cozy Cafe Date',
+      text: 'Some conversations become memories forever.',
+      photoKey: 'photo_memory_2',
+      defaultSvg: 'cafe',
+      defaultImage: 'assets/Gemini_cafe_night.png'
     },
     {
       id: 3,
-      title: 'First Meeting',
-      date: '25 October 2024',
-      text: 'The moment online feelings became real memories.',
-      photoKey: 'photo_timeline_3',
-      defaultSvg: 'meeting'
+      title: '🛵 best Hug Ever',
+      date: 'Evening Rides',
+      text: 'You always felt like home.',
+      photoKey: 'photo_memory_3',
+      defaultSvg: 'scooter',
+      defaultImage: 'assets/hug.png'
     },
     {
       id: 4,
-      title: 'First Date - Muse Cafe',
-      date: '16 November 2024',
-      text: 'One coffee date, countless butterflies.',
-      photoKey: 'photo_timeline_4',
-      defaultSvg: 'cafe'
+      title: '🍽️ Sharing our fav food - Sizzler at Yanki',
+      date: 'Yanki Restaurant',
+      text: 'Every meal tasted better with you.',
+      photoKey: 'photo_memory_4',
+      defaultSvg: 'food',
+      defaultImage: 'assets/yanki_fav_food.png'
     },
     {
       id: 5,
-      title: 'Proposal Day - Tea Post Cafe',
-      date: '28 November 2024',
-      text: 'The easiest yes my heart ever gave.',
-      photoKey: 'photo_timeline_5',
-      defaultSvg: 'ring'
+      title: '🌙 Balcony Relaxing Night',
+      date: 'Cozy Midnight Peace',
+      text: 'Peace was always beside you.',
+      photoKey: 'photo_memory_5',
+      defaultSvg: 'moon'
     },
     {
       id: 6,
-      title: 'Official Relationship',
-      date: '13 December 2024',
-      text: 'Us. Officially forever.',
-      photoKey: 'photo_timeline_6',
-      defaultSvg: 'forever'
+      title: '🚉 Station Surprise',
+      date: 'Station Reunion',
+      text: 'That day I realized how deeply you love me.',
+      photoKey: 'photo_memory_6',
+      defaultSvg: 'station'
+    },
+    {
+      id: 7,
+      title: '🌳 Strolling in Joggers Park',
+      date: 'Sunset Surat Walk',
+      text: 'Even ordinary walks became magical.',
+      photoKey: 'photo_memory_7',
+      defaultSvg: 'park'
+    },
+    {
+      id: 8,
+      title: '🥣 Bangalore Breakfast Date',
+      date: 'Poha & Paneer Chilla',
+      text: 'The simplest mornings became special with you.',
+      photoKey: 'photo_memory_8',
+      defaultSvg: 'breakfast'
+    },
+    {
+      id: 9,
+      title: '💐 Waiting With Flowers',
+      date: 'Our Dream Date',
+      text: `You looked so incredibly handsome waiting for me... I was just blushing, thinking, 'Oh wow, he is my man!'`,
+      photoKey: 'photo_memory_9',
+      defaultSvg: 'park',
+      defaultImage: 'assets/Gemini_waiting_with_flowers.png'
     }
   ];
+
+  activeMemoryPreview: TimelineEvent | null = null;
 
   // Voice Controlled Surprise
   isSpeechSupported = false;
@@ -637,9 +670,19 @@ Mansi 🌸`;
     this.showWishConfirmation = false;
     this.letterOpened = false;
     this.letterTypewriterText = '';
+    this.activeMemoryPreview = null;
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
     this.triggerSingleConfetti();
+  }
+
+  selectMemoryPreview(event: TimelineEvent) {
+    this.activeMemoryPreview = event;
+    this.triggerSingleConfetti();
+  }
+
+  closeMemoryPreview() {
+    this.activeMemoryPreview = null;
   }
 
   // Canvas star background particles
