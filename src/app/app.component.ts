@@ -29,18 +29,13 @@ export class AppComponent implements OnInit, OnDestroy {
   audioVolume = 0.5;
   tracks = [
     { name: 'Kehte Hain Khuda Ne (Raabta)', url: 'assets/raabta.mp3' },
-    { name: 'Tender Affection', url: 'assets/tender_affection.mp3' },
-    { name: 'Romantic Serenade', url: 'assets/romantic_serenade.mp3' }
+    { name: 'Qayde Se', url: 'assets/Qayde_Se.mp3' },
+    { name: 'Happy Birthday', url: 'assets/happy-birthday.mp3' }
   ];
   showMusicPanel = false;
   customTrackUrl = '';
 
-  // Google Search Surprise
-  googleSearchInput = '';
-  isGoogleTyping = false;
-  isGoogleLoading = false;
-  showGoogleResults = false;
-  googleSurpriseUnlocked = false;
+
 
   // Timeline & local-storage photos
   timelineEvents: TimelineEvent[] = [
@@ -83,7 +78,7 @@ export class AppComponent implements OnInit, OnDestroy {
     {
       id: 5,
       title: '🛵 best Hug Ever',
-      date: 'Evening Rides',
+       date: '28 November 2024',
       text: 'You always felt like home.',
       photoKey: 'photo_memory_3',
       defaultSvg: 'scooter',
@@ -91,8 +86,8 @@ export class AppComponent implements OnInit, OnDestroy {
     },
     {
       id: 6,
-      title: '🍽️ Sharing our fav food - Sizzler at Yanki',
-      date: 'Yanki Restaurant',
+      title: '“The Taste of Us” 🍴❤️ - Sizzler at Yanki',
+      date: 'our faviourite - szzler date',
       text: 'Every meal tasted better with you.',
       photoKey: 'photo_memory_4',
       defaultSvg: 'food',
@@ -100,7 +95,7 @@ export class AppComponent implements OnInit, OnDestroy {
     },
     {
       id: 7,
-      title: '🌙 Balcony Relaxing Night',
+      title: '💫 A Peaceful Night With You',
       date: 'Cozy Midnight Peace',
       text: 'Peace was always beside you.',
       photoKey: 'photo_memory_5',
@@ -109,9 +104,9 @@ export class AppComponent implements OnInit, OnDestroy {
     },
     {
       id: 8,
-      title: '🚉 Station Surprise With Injured Leg',
+      title: '🚆 A Love That Never Gives Up',
       date: 'Station Reunion',
-      text: 'He was waiting for me at the station despite having one injured leg, still smiling and surprising me. That day I realized how deeply you love me.',
+      text: 'Despite the pain in your leg, you still came all the way to surprise me with that beautiful smile. In that moment, I realized how deeply and genuinely you love me. ✨',
       photoKey: 'photo_memory_6',
       defaultSvg: 'station',
       defaultImage: 'assets/injurded.png'
@@ -120,7 +115,7 @@ export class AppComponent implements OnInit, OnDestroy {
       id: 9,
       title: '💄 Painting Happiness',
       date: 'Sweet Makeup Date',
-      text: `Getting ready with the person I love most. He makes my heart blush more than the makeup—not just doing makeup, he's painting happiness on my face. His care feels softer than any blush. 🌸`,
+      text: `You don’t just help me get ready… you make me feel loved in the smallest, softest ways. From fixing my hair to doing my makeup, every little thing you do makes my heart fall for you even more. 🌸`,
       photoKey: 'photo_memory_10',
       defaultSvg: 'cafe',
       defaultImage: 'assets/makeup.png'
@@ -129,23 +124,22 @@ export class AppComponent implements OnInit, OnDestroy {
 
   activeMemoryPreview: TimelineEvent | null = null;
 
-  // Voice Controlled Surprise
-  isSpeechSupported = false;
-  recognition: any;
-  isListening = false;
-  voiceInputText = '';
-  voiceSurpriseUnlocked = false;
-  voiceErrorText = '';
-  manualCodeInput = '';
+  // Digital Love Sticky Notes
+  stickyNotes: { [key: number]: string } = {};
+  editingNoteId: number | null = null;
+  tempNoteText = '';
+  flippedPolaroids: { [key: number]: boolean } = {};
+
+
 
   // Reasons Flip Cards
   reasons = [
     { title: 'Your Smile', desc: 'Your smile lights up even my darkest days. It’s my absolute favorite view in the whole world.', icon: 'smile' },
-    { title: 'Your Care', desc: 'The gentle way you check up on me, pamper me, and make sure I have eaten. You care like no other.', icon: 'heart' },
-    { title: 'The Way You Understand Me', desc: 'You read between my lines and understand my silence, my chaotic thoughts, and my unsaid worries.', icon: 'sparkles' },
+    { title: 'Your Care', desc: 'The gentle way you check up on me and pamper me. You care like no other.', icon: 'heart' },
     { title: 'How Safe I Feel With You', desc: 'No matter how chaotic the world gets, in your virtual or real embrace, I feel fully protected and peaceful.', icon: 'shield' },
     { title: 'Your Support', desc: 'You push me towards my dreams, support my ambitions, and believe in me even when I doubt myself.', icon: 'star' },
-    { title: 'Our Memories Together', desc: 'Every late-night call, shared laugh, virtual movie date, and sweet conversation is forever locked in my heart.', icon: 'camera' }
+    { title: 'Our Memories Together', desc: 'Every late-night call, shared laugh, virtual date, surprises and sweet conversation is forever locked in my heart.', icon: 'camera' },
+    { title: 'How You Inspire Me', desc: 'You hold a mirror to my best self. You support my mental, physical, and emotional growth completely, helping me bloom without ever trying to change who I am.', icon: 'sparkles' }
   ];
 
   // Romantic Spin Wheel Game & Coupon Locker
@@ -183,7 +177,7 @@ Happy Birthday, my love! ❤️
 
 Thank you for entering my life and making it so incredibly beautiful. Distance may keep us in separate cities today, but there is not a single second where my heart doesn't feel your presence.
 
-Every conversation we share, every virtual coffee, and every little memory we have created feels like pure magic. I am so grateful for your infinite care, your warm smile, and the safety I find in you.
+Every conversation we share and every little memory we have created feels like pure magic. I am so grateful for your infinite care, your warm smile, and the safety I find in you.
 
 No matter where life takes us, I want every chapter of my life to have you in it. You are my forever, my home, and the love of my life.
 
@@ -202,12 +196,12 @@ Mansi 🌸`;
 
   ngOnInit() {
     this.initAudio();
-    this.initSpeechRecognition();
     this.loadPersistedImages();
     this.startLoveCounter();
     this.generateFloatingHeartsArray();
     this.animateStarsBackground();
     this.loadClaimedCoupons();
+    this.loadStickyNotes();
   }
 
   ngOnDestroy() {
@@ -323,6 +317,52 @@ Mansi 🌸`;
     delete this.loadedImages[key];
   }
 
+  // --- DIGITAL LOVE STICKY NOTES ---
+  loadStickyNotes() {
+    const saved = localStorage.getItem('sticky_notes');
+    if (saved) {
+      this.stickyNotes = JSON.parse(saved);
+    }
+  }
+
+  startEditingNote(event: Event, eventId: number) {
+    event.stopPropagation(); // Avoid opening the details modal
+    this.editingNoteId = eventId;
+    this.tempNoteText = this.stickyNotes[eventId] || '';
+  }
+
+  cancelEditingNote(event: Event) {
+    event.stopPropagation();
+    this.editingNoteId = null;
+  }
+
+  saveNoteClick(event: Event, eventId: number) {
+    event.stopPropagation();
+    if (this.tempNoteText.trim()) {
+      this.stickyNotes[eventId] = this.tempNoteText.trim();
+      localStorage.setItem('sticky_notes', JSON.stringify(this.stickyNotes));
+      this.editingNoteId = null;
+      this.triggerSingleConfetti();
+    } else {
+      this.deleteStickyNote(event, eventId);
+    }
+  }
+
+  deleteStickyNote(event: Event, eventId: number) {
+    event.stopPropagation();
+    delete this.stickyNotes[eventId];
+    localStorage.setItem('sticky_notes', JSON.stringify(this.stickyNotes));
+    this.editingNoteId = null;
+    this.triggerSingleConfetti();
+  }
+
+  toggleFlip(event: Event, eventId: number) {
+    event.stopPropagation();
+    this.flippedPolaroids[eventId] = !this.flippedPolaroids[eventId];
+  }
+
+
+
   // --- FLOATING HEARTS BACKGROUND ---
   generateFloatingHeartsArray() {
     for (let i = 0; i < 30; i++) {
@@ -358,156 +398,13 @@ Mansi 🌸`;
       });
     }
 
-    const nextSection = document.getElementById('google-surprise');
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Start typing surprise
-    setTimeout(() => {
-      this.startGoogleTypingAnimation();
-    }, 800);
-  }
-
-  // --- GOOGLE SEARCH STYLE SURPRISE ---
-  startGoogleTypingAnimation() {
-    if (this.isGoogleTyping || this.googleSurpriseUnlocked) return;
-    this.isGoogleTyping = true;
-    this.googleSearchInput = '';
-    
-    const textToType = "Searching for the best person in the world...";
-    let i = 0;
-    const typingTimer = setInterval(() => {
-      if (i < textToType.length) {
-        this.googleSearchInput += textToType.charAt(i);
-        i++;
-      } else {
-        clearInterval(typingTimer);
-        this.isGoogleTyping = false;
-        
-        // Trigger Loading spinner
-        this.isGoogleLoading = true;
-        setTimeout(() => {
-          this.isGoogleLoading = false;
-          this.showGoogleResults = true;
-          this.googleSurpriseUnlocked = true;
-          
-          // Confetti for success!
-          confetti({
-            particleCount: 80,
-            spread: 80,
-            origin: { y: 0.6 },
-            colors: ['#ff4d80', '#ffd700']
-          });
-        }, 2200);
-      }
-    }, 80);
-  }
-
-  resetGoogleSurprise() {
-    this.googleSearchInput = '';
-    this.isGoogleTyping = false;
-    this.isGoogleLoading = false;
-    this.showGoogleResults = false;
-    this.googleSurpriseUnlocked = false;
-    this.startGoogleTypingAnimation();
-  }
-
-  scrollFromGoogle() {
     const nextSection = document.getElementById('timeline-section');
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
-  // --- WEB SPEECH RECOGNITION API ---
-  initSpeechRecognition() {
-    const SpeechObj = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (SpeechObj) {
-      this.isSpeechSupported = true;
-      this.recognition = new SpeechObj();
-      this.recognition.continuous = false;
-      this.recognition.lang = 'en-US';
-      this.recognition.interimResults = false;
-      
-      this.recognition.onstart = () => {
-        this.isListening = true;
-        this.voiceErrorText = '';
-      };
-      
-      this.recognition.onerror = (event: any) => {
-        console.error('Speech recognition error', event);
-        this.isListening = false;
-        this.voiceErrorText = 'Speech not recognized. Please try again or use manual box below!';
-      };
-      
-      this.recognition.onend = () => {
-        this.isListening = false;
-      };
-      
-      this.recognition.onresult = (event: any) => {
-        const resultText = event.results[0][0].transcript.toLowerCase();
-        this.voiceInputText = resultText;
-        this.checkSpeechResult(resultText);
-      };
-    } else {
-      this.isSpeechSupported = false;
-    }
-  }
 
-  toggleListening() {
-    if (!this.isSpeechSupported) return;
-    if (this.isListening) {
-      this.recognition.stop();
-    } else {
-      this.voiceInputText = '';
-      this.recognition.start();
-    }
-  }
-
-  checkSpeechResult(text: string) {
-    if (text.includes('i love you') || text.includes('love you') || text.includes('love') || text.includes('raj') || text.includes('mansi')) {
-      this.unlockVoiceSurprise();
-    } else {
-      this.voiceErrorText = `You said: "${text}". Say "I Love You" to unlock!`;
-    }
-  }
-
-  submitManualCode() {
-    const cleanCode = this.manualCodeInput.trim().toLowerCase();
-    if (cleanCode.includes('i love you') || cleanCode.includes('love') || cleanCode === 'iloveyou') {
-      this.unlockVoiceSurprise();
-    } else {
-      this.voiceErrorText = 'Incorrect code. Type "I Love You" to unlock the magic!';
-    }
-  }
-
-  unlockVoiceSurprise() {
-    this.voiceSurpriseUnlocked = true;
-    this.voiceErrorText = '';
-    
-    // Play a massive explosion of hearts!
-    const end = Date.now() + (3 * 1000);
-    const interval = setInterval(() => {
-      if (Date.now() > end) {
-        return clearInterval(interval);
-      }
-      confetti({
-        startVelocity: 30,
-        spread: 360,
-        ticks: 60,
-        origin: { x: Math.random(), y: Math.random() - 0.2 },
-        colors: ['#ff4d80', '#e0115f', '#ffd700']
-      });
-    }, 200);
-
-    setTimeout(() => {
-      const voiceSurpriseResult = document.getElementById('voice-surprise-unlocked-panel');
-      if (voiceSurpriseResult) {
-        voiceSurpriseResult.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 300);
-  }
 
   // --- LOVE TIMELINE DURATION COUNTER ---
   startLoveCounter() {
@@ -614,17 +511,13 @@ Mansi 🌸`;
   // --- REPLAY OUR STORY ---
   replayStory() {
     // Reset surprises if they want to experience again
-    this.googleSurpriseUnlocked = false;
-    this.showGoogleResults = false;
-    this.googleSearchInput = '';
-    this.voiceSurpriseUnlocked = false;
-    this.manualCodeInput = '';
     this.cakeCandlesLit = true;
     this.wishMade = false;
     this.showWishConfirmation = false;
     this.letterOpened = false;
     this.letterTypewriterText = '';
     this.activeMemoryPreview = null;
+    this.flippedPolaroids = {};
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
     this.triggerSingleConfetti();

@@ -124,7 +124,7 @@
       <button (click)="startStory()" class="px-8 py-4 rounded-full bg-gradient-to-r from-romantic-pink via-romantic-rose to-romantic-pink text-white font-bold text-lg tracking-wider uppercase transition-all duration-500 hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,77,128,0.5)] border border-white/20 relative overflow-hidden group">
         <span class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></span>
         <span class="flex items-center gap-2 justify-center">
-          Start Our Story
+          Step Into Our World 🌸
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 animate-pulse" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
         </span>
       </button>
@@ -139,80 +139,7 @@
     </p>
   </div>
 </section>
-
-<!-- ==================== GOOGLE SEARCH SURPRISE ==================== -->
-<section id="google-surprise" class="min-h-screen relative flex flex-col justify-center items-center px-4 py-20 z-10 bg-gradient-to-b from-romantic-darkest via-romantic-purple/10 to-romantic-darkest border-t border-purple-900/10">
-  <div class="absolute w-[600px] h-[300px] rounded-full bg-romantic-pink/5 blur-[120px] top-1/3 left-1/2 -translate-x-1/2 -z-10"></div>
-
-  <div class="w-full max-w-2xl glass-panel rounded-3xl p-4 sm:p-8 border border-purple-500/20 shadow-2xl relative">
-    <div class="absolute top-4 right-4">
-      <button (click)="resetGoogleSurprise()" title="Reset search" class="text-purple-400 hover:text-romantic-pink transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H17" /></svg>
-      </button>
-    </div>
-
-    <!-- Search Logo -->
-    <div class="text-center mb-8">
-      <h2 class="text-4xl md:text-6xl font-cursive text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-romantic-pink to-romantic-gold tracking-wider select-none">
-        Lovegle
-      </h2>
-    </div>
-
-    <!-- Search Input Block -->
-    <div class="relative w-full max-w-lg mx-auto mb-6">
-      <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-        <svg class="h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-      </div>
-      <div class="w-full pl-12 pr-12 py-3.5 bg-romantic-darkest/70 border border-purple-500/30 rounded-full text-purple-200 text-sm md:text-base focus:outline-none min-h-[50px] flex items-center">
-        <span>{{ googleSearchInput }}</span>
-        <span *ngIf="isGoogleTyping" class="ml-0.5 w-0.5 h-5 bg-romantic-pink animate-pulse"></span>
-      </div>
-      
-      <!-- Microphone icon -->
-      <div class="absolute inset-y-0 right-4 flex items-center text-purple-400">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-romantic-pink" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 005.93 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clip-rule="evenodd"/></svg>
-      </div>
-    </div>
-
-    <!-- Loading Animation -->
-    <div *ngIf="isGoogleLoading" class="flex flex-col items-center justify-center py-8 space-y-4">
-      <div class="relative flex items-center justify-center">
-        <div class="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-romantic-pink opacity-75"></div>
-        <div class="relative rounded-full h-10 w-10 bg-romantic-purple/80 flex items-center justify-center border border-romantic-pink/40">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-        </div>
-      </div>
-      <p class="text-sm text-purple-300 font-light">Analyzing world database...</p>
-    </div>
-
-    <!-- Search Results Panel -->
-    <div *ngIf="showGoogleResults" class="mt-6 border-t border-purple-500/10 pt-6 animate-fade-in space-y-4">
-      <div class="text-xs text-purple-400">About 1 result found (0.07 seconds)</div>
-      
-      <!-- Result Card -->
-      <div class="glass-panel-hover glass-card-gold rounded-2xl p-5 border border-romantic-gold/20 shadow-xl transition-all">
-        <div class="text-xs text-romantic-pink font-semibold uppercase tracking-widest mb-1 flex items-center gap-1.5">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          Best Person In The World
-        </div>
-        <h3 class="text-2xl md:text-3xl font-bold text-white text-glow-pink">Raj ❤️</h3>
-        <p class="text-sm text-romantic-gold font-medium mt-1">Result found: The love of Mansi's life.</p>
-        <p class="text-xs text-purple-200/70 mt-3 leading-relaxed border-t border-purple-500/10 pt-3">
-          Highly specialized in having the cutest smile, spreading unconditional care, making Mansi feel unbelievably safe, and holding the keys to her heart forever. Match compatibility score: 1000%.
-        </p>
-      </div>
-
-      <!-- Action Button to Timeline -->
-      <div class="text-center pt-4">
-        <button (click)="scrollFromGoogle()" class="px-6 py-2.5 rounded-full bg-romantic-purple hover:bg-romantic-pink border border-romantic-pink/40 text-purple-100 font-bold transition-all shadow hover:shadow-romantic-pink/40">
-          Unveil Our Timeline
-        </button>
-      </div>
-    </div>
-  </div>
-</section><!-- ==================== OUR BEAUTIFUL MEMORIES CLOTHESLINE ==================== -->
+<!-- ==================== OUR BEAUTIFUL MEMORIES CLOTHESLINE ==================== -->
 <section id="timeline-section" class="py-24 relative overflow-hidden z-10 bg-gradient-to-b from-romantic-darkest via-romantic-purple/5 to-romantic-darkest">
   <!-- Glowing Ghibli lights background layers -->
   <div class="absolute w-[600px] h-[600px] rounded-full bg-romantic-pink/5 blur-[140px] top-1/4 left-1/4 -z-10 animate-pulse-slow"></div>
@@ -264,11 +191,10 @@
         
         <!-- Hanging polaroid item -->
         <div *ngFor="let event of timelineEvents; let idx = index; let even = even" 
-             (click)="selectMemoryPreview(event)"
              [class.animate-sway-even]="even"
              [class.animate-sway-odd]="!even"
              [ngClass]="'polaroid-wrapper-' + (idx % 8)"
-             class="polaroid-group w-full max-w-[360px] mx-auto flex flex-col items-center relative transition-transform duration-300 select-none">
+             class="polaroid-group w-full max-w-[360px] mx-auto flex flex-col items-center relative transition-transform duration-300 select-none group">
           
           <!-- Clothespin: Glowing Heart Clip -->
           <div class="clothespin-clip absolute top-[-30px] z-30 transition-transform duration-300">
@@ -280,70 +206,164 @@
             <div class="absolute top-3 left-4.5 w-1 h-3.5 bg-purple-950/60 rounded-full"></div>
           </div>
  
-          <!-- The Hanging Polaroid Card -->
-          <div class="polaroid-card-container w-full glass-panel rounded-2xl p-4 border border-purple-500/15 shadow-2xl cursor-pointer hover:border-romantic-pink/40 hover:shadow-[0_20px_40px_-10px_rgba(255,77,128,0.35)] flex flex-col">
-            <!-- Image Area -->
-            <div class="relative w-full aspect-square bg-romantic-darkest rounded-lg overflow-hidden border border-purple-500/10">
+          <!-- The Hanging Polaroid Card with 3D Flip Container -->
+          <div class="polaroid-card-container w-full h-[460px] perspective-1000 cursor-pointer">
+            <div class="relative w-full h-full preserve-3d duration-700"
+                 [class.rotate-y-180]="flippedPolaroids[event.id]">
               
-              <!-- User Photo or Default Image if present -->
-              <img *ngIf="loadedImages[event.photoKey] || event.defaultImage" 
-                   [src]="loadedImages[event.photoKey] || event.defaultImage" 
-                   class="w-full h-full object-cover transition-transform duration-500" 
-                   alt="Hanging Memory">
+              <!-- FRONT SIDE (Standard Polaroid) -->
+              <div (click)="stickyNotes[event.id] ? toggleFlip($event, event.id) : selectMemoryPreview(event)"
+                   class="absolute inset-0 backface-hidden glass-panel rounded-2xl p-4 border border-purple-500/15 shadow-2xl hover:border-romantic-pink/40 hover:shadow-[0_20px_40px_-10px_rgba(255,77,128,0.35)] flex flex-col justify-between">
+                
+                <!-- Image Area -->
+                <div class="relative w-full aspect-square bg-romantic-darkest rounded-lg overflow-hidden border border-purple-500/10">
+                  
+                  <!-- User Photo or Default Image if present -->
+                  <img *ngIf="loadedImages[event.photoKey] || event.defaultImage" 
+                       [src]="loadedImages[event.photoKey] || event.defaultImage" 
+                       class="w-full h-full object-cover transition-transform duration-500" 
+                       alt="Hanging Memory">
 
-              <!-- Cozy Placeholder Fallback -->
-              <div *ngIf="!loadedImages[event.photoKey] && !event.defaultImage" class="relative w-full h-full">
-                <img src="assets/ghibli_romantic_scene.png" 
-                     class="absolute inset-0 w-full h-full object-cover opacity-60 blur-[0.3px]" 
-                     alt="Cozy scene placeholder">
+                  <!-- Cozy Placeholder Fallback -->
+                  <div *ngIf="!loadedImages[event.photoKey] && !event.defaultImage" class="relative w-full h-full">
+                    <img src="assets/ghibli_romantic_scene.png" 
+                         class="absolute inset-0 w-full h-full object-cover opacity-60 blur-[0.3px]" 
+                         alt="Cozy scene placeholder">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-br from-romantic-dark/30 via-romantic-purple/20 to-romantic-darkest/75 mix-blend-multiply"></div>
+                    
+                    <!-- Tiny Custom SVG overlay representing the scene -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="w-12 h-12 rounded-full bg-romantic-darkest/95 flex items-center justify-center border border-romantic-pink/30 shadow-md">
+                        <!-- Custom default SVGs -->
+                        <svg *ngIf="event.defaultSvg === 'ring'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="14" r="5" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 9l-2-3h4l-2 3z" /></svg>
+                        <svg *ngIf="event.defaultSvg === 'cafe'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 14a4 4 0 008 0V8H6v6zM14 10h2a2 2 0 010 4h-2M9 5c0-1.5 1-2 1-2" /></svg>
+                        <svg *ngIf="event.defaultSvg === 'scooter'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="16" r="3" /><circle cx="18" cy="16" r="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 13h10M16 13l2-6" /></svg>
+                        <svg *ngIf="event.defaultSvg === 'food'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="15" rx="8" ry="3" /><path d="M7 14c0-2 2-3 5-3s5 1 5 3" stroke-linecap="round" /></svg>
+                        <svg *ngIf="event.defaultSvg === 'moon'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                        <svg *ngIf="event.defaultSvg === 'station'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="10" rx="2" /><circle cx="12" cy="13" r="2" /></svg>
+                        <svg *ngIf="event.defaultSvg === 'park'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18c3.314 0 6-2.686 6-6S15.314 6 12 6s-6 2.686-6 6" stroke-linecap="round" /><path d="M4 18h16" stroke-linecap="round" /></svg>
+                        <svg *ngIf="event.defaultSvg === 'breakfast'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8" /><path d="M9 12h6M12 9v6" stroke-linecap="round" /></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Interactive Polaroid Hover Overlay -->
+                <div class="polaroid-overlay absolute inset-0 bg-romantic-darkest/75 flex flex-col justify-center items-center p-4 text-center pointer-events-none z-20">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-romantic-pink animate-pulse mb-1.5 filter drop-shadow-[0_0_10px_rgba(255,77,128,0.75)]">
+                    <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                  </svg>
+                  <span class="font-cursive text-2xl text-white text-glow-pink">
+                    {{ stickyNotes[event.id] ? 'Flip & Read Note' : 'Open Memory' }}
+                  </span>
+                  <span class="text-[10px] text-purple-300 font-mono tracking-widest uppercase mt-1">✨ A Moment With You ✨</span>
+                </div>
+
+                <!-- Sticky Note Edit Form Overlay on FRONT -->
+                <div *ngIf="editingNoteId === event.id" 
+                     (click)="$event.stopPropagation()"
+                     class="absolute inset-0 bg-romantic-darkest/95 flex flex-col justify-between p-3.5 z-40 border border-romantic-pink/30 rounded-lg">
+                  <span class="text-[10px] text-romantic-pink font-semibold uppercase tracking-wider block text-center mb-1">
+                    ✏️ Add Cozy Note
+                  </span>
+                  <textarea [(ngModel)]="tempNoteText"
+                            placeholder="Type a sweet memory or note..."
+                            class="w-full h-[60%] bg-romantic-darkest/80 border border-purple-500/20 text-purple-200 text-xs p-2 rounded-lg resize-none focus:outline-none focus:border-romantic-pink/40 font-light"></textarea>
+                  <div class="flex gap-2 justify-center mt-2">
+                    <button (click)="saveNoteClick($event, event.id)" 
+                            class="px-2 py-0.5 text-[10px] font-bold text-white bg-romantic-pink hover:bg-romantic-rose rounded-full shadow transition-all">
+                      Save
+                    </button>
+                    <button (click)="cancelEditingNote($event)" 
+                            class="px-2 py-0.5 text-[10px] font-bold text-purple-300 hover:text-white bg-white/10 hover:bg-white/20 rounded-full transition-all">
+                      Cancel
+                    </button>
+                    <button *ngIf="stickyNotes[event.id]"
+                            (click)="deleteStickyNote($event, event.id)" 
+                            class="px-2 py-0.5 text-[10px] font-bold text-red-300 hover:text-white bg-red-500/10 hover:bg-red-500/25 rounded-full transition-all">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Pencil Icon to Edit/Add Note on FRONT -->
+                <button *ngIf="editingNoteId !== event.id"
+                        (click)="startEditingNote($event, event.id)"
+                        class="absolute top-2 right-2 w-7 h-7 rounded-full bg-romantic-darkest/90 hover:bg-romantic-pink text-purple-300 hover:text-white flex items-center justify-center border border-purple-500/20 shadow-md transition-all duration-300 hover:scale-110 z-30 opacity-0 group-hover:opacity-100"
+                        title="Add love note">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                  </svg>
+                </button>
+
+                <!-- Glowing Heart Badge on FRONT (If note exists) -->
+                <div *ngIf="stickyNotes[event.id] && editingNoteId !== event.id"
+                     class="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-romantic-pink/90 text-white flex items-center justify-center border border-white/20 shadow-[0_0_12px_rgba(255,77,128,0.8)] z-30 animate-pulse">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+
+                <!-- Polaroid Signature Label -->
+                <div class="text-center pt-3 border-t border-purple-500/10 select-none flex flex-col items-center">
+                  <!-- Title -->
+                  <span class="text-base md:text-lg font-serif font-bold text-yellow-100/95 tracking-wide group-hover/polaroid-clip:text-romantic-pink transition-colors line-clamp-1">
+                    {{ event.title }}
+                  </span>
+                  <!-- Caption -->
+                  <span class="text-xs font-sans font-light text-purple-200/85 italic mt-1 line-clamp-1 max-w-[280px]">
+                    "{{ event.text }}"
+                  </span>
+                </div>
+
+              </div>
+
+              <!-- BACK SIDE (3D Flipped Cozy Note Back) -->
+              <div *ngIf="stickyNotes[event.id]"
+                   (click)="toggleFlip($event, event.id)"
+                   class="absolute inset-0 backface-hidden rotate-y-180 glass-panel border border-romantic-gold/30 rounded-2xl p-5 flex flex-col justify-between shadow-2xl"
+                   style="background: linear-gradient(135deg, rgba(30,12,50,0.95) 0%, rgba(12,4,24,0.98) 100%)">
                 
-                <div class="absolute inset-0 bg-gradient-to-br from-romantic-dark/30 via-romantic-purple/20 to-romantic-darkest/75 mix-blend-multiply"></div>
-                
-                <!-- Tiny Custom SVG overlay representing the scene -->
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="w-12 h-12 rounded-full bg-romantic-darkest/95 flex items-center justify-center border border-romantic-pink/30 shadow-md">
-                    <!-- Proposal Ring -->
-                    <svg *ngIf="event.defaultSvg === 'ring'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="14" r="5" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 9l-2-3h4l-2 3z" /></svg>
-                    <!-- Cozy Cafe -->
-                    <svg *ngIf="event.defaultSvg === 'cafe'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 14a4 4 0 008 0V8H6v6zM14 10h2a2 2 0 010 4h-2M9 5c0-1.5 1-2 1-2" /></svg>
-                    <!-- scooter -->
-                    <svg *ngIf="event.defaultSvg === 'scooter'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="16" r="3" /><circle cx="18" cy="16" r="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 13h10M16 13l2-6" /></svg>
-                    <!-- Sizzling Platter -->
-                    <svg *ngIf="event.defaultSvg === 'food'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="15" rx="8" ry="3" /><path d="M7 14c0-2 2-3 5-3s5 1 5 3" stroke-linecap="round" /></svg>
-                    <!-- Balcony Starry Moon -->
-                    <svg *ngIf="event.defaultSvg === 'moon'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-                    <!-- train Station Reunion -->
-                    <svg *ngIf="event.defaultSvg === 'station'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="10" rx="2" /><circle cx="12" cy="13" r="2" /></svg>
-                    <!-- Sunset park -->
-                    <svg *ngIf="event.defaultSvg === 'park'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18c3.314 0 6-2.686 6-6S15.314 6 12 6s-6 2.686-6 6" stroke-linecap="round" /><path d="M4 18h16" stroke-linecap="round" /></svg>
-                    <!-- Breakfast date -->
-                    <svg *ngIf="event.defaultSvg === 'breakfast'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8" /><path d="M9 12h6M12 9v6" stroke-linecap="round" /></svg>
+                <!-- Cozy Header -->
+                <div class="flex justify-between items-center border-b border-purple-500/10 pb-2">
+                  <span class="text-[10px] font-mono tracking-widest text-romantic-gold uppercase flex items-center gap-1">
+                    💖 Love Note
+                  </span>
+                  <button (click)="toggleFlip($event, event.id)" 
+                          class="text-purple-400 hover:text-white text-xs flex items-center gap-1">
+                    🔄 Flip front
+                  </button>
+                </div>
+
+                <!-- Custom Handwritten Text note body -->
+                <div class="my-auto py-4 text-center overflow-y-auto max-h-[220px]">
+                  <p class="font-cursive text-2xl text-amber-200 leading-relaxed tracking-wide text-glow-gold px-2">
+                    "{{ stickyNotes[event.id] }}"
+                  </p>
+                </div>
+
+                <!-- Action Button Controls -->
+                <div class="flex flex-col gap-2 border-t border-purple-500/10 pt-3">
+                  <button (click)="selectMemoryPreview(event)" 
+                          class="w-full py-2 bg-romantic-pink hover:bg-romantic-rose text-white font-bold text-xs rounded-full shadow transition-all flex items-center justify-center gap-1.5">
+                    📖 Open Full Scrapbook Page
+                  </button>
+                  <div class="flex gap-2">
+                    <button (click)="startEditingNote($event, event.id)" 
+                            class="w-full py-1 text-[10px] text-purple-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all">
+                      ✏️ Edit
+                    </button>
+                    <button (click)="deleteStickyNote($event, event.id)" 
+                            class="w-full py-1 text-[10px] text-red-300 hover:text-white bg-red-500/10 hover:bg-red-500/20 rounded-full transition-all">
+                      🗑️ Delete
+                    </button>
                   </div>
                 </div>
 
               </div>
 
-              <!-- Interactive Polaroid Hover Overlay -->
-              <div class="polaroid-overlay absolute inset-0 bg-romantic-darkest/75 flex flex-col justify-center items-center p-4 text-center pointer-events-none z-20">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-romantic-pink animate-pulse mb-1.5 filter drop-shadow-[0_0_10px_rgba(255,77,128,0.75)]">
-                  <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
-                </svg>
-                <span class="font-cursive text-2xl text-white text-glow-pink">Open Memory</span>
-                <span class="text-[10px] text-purple-300 font-mono tracking-widest uppercase mt-1">✨ Our Story ✨</span>
-              </div>
-
-            </div>
-
-            <!-- Polaroid Signature Label -->
-            <div class="text-center pt-3.5 border-t border-purple-500/10 mt-3 select-none flex flex-col items-center">
-              <!-- Title in beautiful Serif (Playfair Display) -->
-              <span class="text-lg md:text-xl font-serif font-bold text-yellow-100/95 tracking-wide group-hover/polaroid-clip:text-romantic-pink transition-colors">
-                {{ event.title }}
-              </span>
-              <!-- Caption in readable Sans (Outfit) with elegant italicized styling -->
-              <span class="text-sm font-sans font-light text-purple-200/85 italic mt-2 line-clamp-2 max-w-[320px] leading-relaxed">
-                "{{ event.text }}"
-              </span>
             </div>
           </div>
         </div>
@@ -436,120 +456,6 @@
 
   </div>
 </div>
-
-<!-- ==================== VOICE CONTROLLED SURPRISE ==================== -->
-<section id="voice-surprise" class="min-h-screen py-24 relative flex flex-col justify-center items-center px-4 z-10 bg-gradient-to-b from-romantic-darkest via-romantic-purple/5 to-romantic-darkest border-t border-purple-900/10">
-  <div class="absolute w-[600px] h-[300px] rounded-full bg-romantic-gold/5 blur-[120px] top-1/4 left-1/4 -z-10 animate-pulse-slow"></div>
-
-  <div class="max-w-2xl w-full text-center space-y-8 z-10">
-    <div class="text-xs text-romantic-gold font-bold uppercase tracking-widest flex items-center justify-center gap-1.5">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
-      LockedSurprise Surprise
-    </div>
-    
-    <h2 class="text-4xl md:text-5xl font-black text-white text-glow-pink">Say "I Love You" To Unlock ❤️</h2>
-    <p class="text-purple-300 font-light max-w-md mx-auto leading-relaxed">
-      This surprise reacts to your voice! Click the glowing microphone and say the secret romantic phrase.
-    </p>
-
-    <!-- Speech Microphone Trigger -->
-    <div class="py-6 flex flex-col items-center justify-center space-y-4">
-      <button (click)="toggleListening()" 
-              [disabled]="!isSpeechSupported"
-              [class.bg-red-500]="isListening"
-              [class.shadow-[0_0_40px_rgba(239,68,68,0.7)]]="isListening"
-              [class.bg-romantic-pink]="!isListening && isSpeechSupported"
-              [class.shadow-[0_0_35px_rgba(255,77,128,0.6)]]="!isListening && isSpeechSupported"
-              [class.bg-purple-900]="!isSpeechSupported"
-              [class.opacity-60]="!isSpeechSupported"
-              class="w-24 h-24 rounded-full flex items-center justify-center border border-white/20 transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer disabled:cursor-not-allowed">
-        
-        <!-- Microphone Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-        </svg>
-      </button>
-
-      <!-- Wave indicators when listening -->
-      <div class="flex items-center gap-1.5 h-6" *ngIf="isListening">
-        <span class="w-1 h-3 bg-red-400 animate-bounce" style="animation-delay: 0.1s"></span>
-        <span class="w-1 h-5 bg-red-400 animate-bounce" style="animation-delay: 0.2s"></span>
-        <span class="w-1 h-2 bg-red-400 animate-bounce" style="animation-delay: 0.3s"></span>
-        <span class="w-1 h-6 bg-red-400 animate-bounce" style="animation-delay: 0.15s"></span>
-        <span class="w-1 h-3 bg-red-400 animate-bounce" style="animation-delay: 0.4s"></span>
-      </div>
-
-      <p class="text-xs tracking-wider" 
-         [class.text-red-400]="isListening" 
-         [class.text-purple-300]="!isListening">
-        {{ isListening ? 'Listening for secret words...' : (isSpeechSupported ? 'Tap to activate voice' : 'Browser doesn\'t support Speech API') }}
-      </p>
-    </div>
-
-    <!-- Error/Notice Display -->
-    <div *ngIf="voiceErrorText" class="text-sm font-semibold text-romantic-gold animate-pulse text-glow-gold max-w-sm mx-auto">
-      {{ voiceErrorText }}
-    </div>
-
-    <!-- Manual Code Fallback (If speech recognition is blocked/unsupported) -->
-    <div class="pt-6 max-w-xs mx-auto border-t border-purple-500/10">
-      <p class="text-xs text-purple-300/50 mb-3">Or unlock manually by typing code below:</p>
-      <div class="flex gap-2">
-        <input type="text" [(ngModel)]="manualCodeInput" placeholder="Enter romantic phrase" class="bg-romantic-darkest border border-purple-500/20 text-sm px-4 py-2 rounded-full w-full text-purple-100 focus:outline-none focus:border-romantic-pink/50 text-center">
-        <button (click)="submitManualCode()" class="px-5 py-2 bg-romantic-pink hover:bg-romantic-rose font-bold text-sm text-white rounded-full transition-all shadow">Unlock</button>
-      </div>
-    </div>
-
-    <!-- UNLOCKED PRIVATE SURPRISE CONTENT -->
-    <div id="voice-surprise-unlocked-panel" *ngIf="voiceSurpriseUnlocked" class="mt-12 glass-panel border border-romantic-gold/30 rounded-3xl p-4 sm:p-8 shadow-3xl text-left space-y-6 relative overflow-hidden animate-fade-in">
-      <div class="absolute -right-10 -top-10 w-40 h-40 bg-romantic-gold/5 rounded-full blur-2xl"></div>
-
-      <div class="flex items-center gap-3 border-b border-romantic-gold/10 pb-4">
-        <div class="w-10 h-10 rounded-full bg-romantic-gold/20 flex items-center justify-center text-romantic-gold">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 20 20"><path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H9V7a1 1 0 012 0v2a1 1 0 102 0V7a5 5 0 00-5-5z"/></svg>
-        </div>
-        <div>
-          <h4 class="text-lg font-bold text-white leading-none">Voice Surprise Unlocked!</h4>
-          <span class="text-[10px] text-romantic-gold uppercase font-semibold">Special message from Mansi</span>
-        </div>
-      </div>
-
-      <p class="text-lg md:text-xl text-yellow-100 font-light italic leading-relaxed">
-        "No matter the distance, my heart will always find you. You are my safe place, my best friend, and my ultimate dream come true. You complete me in ways I never thought possible."
-      </p>
-
-      <div class="grid grid-cols-2 gap-4 pt-4">
-        <!-- Hidden Photo 1 Persisted -->
-        <div class="relative aspect-square bg-purple-950/20 border border-purple-500/10 rounded-2xl overflow-hidden shadow-lg">
-          <img *ngIf="loadedImages['photo_voice_1']" [src]="loadedImages['photo_voice_1']" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Secret Memory">
-          
-          <div *ngIf="!loadedImages['photo_voice_1']" class="relative w-full h-full">
-            <img src="assets/ghibli_romantic_scene.png" class="absolute inset-0 w-full h-full object-cover opacity-60 blur-[0.3px]" alt="Cozy scene placeholder">
-            <div class="absolute inset-0 bg-gradient-to-br from-romantic-dark/30 via-romantic-purple/20 to-romantic-darkest/75 mix-blend-multiply"></div>
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-3 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink/70 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-              <span class="text-[10px] text-purple-300 font-medium">Secret Memory 1</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hidden Photo 2 Persisted -->
-        <div class="relative aspect-square bg-purple-950/20 border border-purple-500/10 rounded-2xl overflow-hidden shadow-lg">
-          <img *ngIf="loadedImages['photo_voice_2']" [src]="loadedImages['photo_voice_2']" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" alt="Secret Memory">
-          
-          <div *ngIf="!loadedImages['photo_voice_2']" class="relative w-full h-full">
-            <img src="assets/ghibli_romantic_scene.png" class="absolute inset-0 w-full h-full object-cover opacity-60 blur-[0.3px]" alt="Cozy scene placeholder">
-            <div class="absolute inset-0 bg-gradient-to-br from-romantic-dark/30 via-romantic-purple/20 to-romantic-darkest/75 mix-blend-multiply"></div>
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-3 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink/70 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-              <span class="text-[10px] text-purple-300 font-medium">Secret Memory 2</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ==================== REASONS WHY I LOVE YOU ==================== -->
 <section class="py-24 relative z-10 bg-gradient-to-b from-romantic-darkest via-romantic-purple/5 to-romantic-darkest border-t border-purple-900/10">
@@ -823,22 +729,22 @@
 
   <div class="max-w-4xl mx-auto px-4 text-center z-10 relative">
     
-    <!-- Beautiful glowing 3D moon mockup -->
-    <div class="relative w-40 h-40 mx-auto mb-10 flex items-center justify-center">
-      <div class="absolute inset-0 rounded-full bg-yellow-100 shadow-[0_0_50px_#fff,_0_0_100px_rgba(255,215,0,0.5)] animate-pulse-slow"></div>
-      <!-- Moon crater craters textures -->
-      <div class="absolute top-1/4 left-1/3 w-6 h-6 rounded-full bg-yellow-200/50 blur-[1px]"></div>
-      <div class="absolute top-1/2 left-1/4 w-8 h-8 rounded-full bg-yellow-200/50 blur-[1px]"></div>
-      <div class="absolute top-1/3 right-1/4 w-5 h-5 rounded-full bg-yellow-200/50 blur-[1px]"></div>
+    <!-- Beautiful glowing 3D pulsing neon heart -->
+    <div class="relative w-40 h-40 mx-auto mb-10 flex items-center justify-center animate-pulse-slow">
+      <!-- Glow background -->
+      <div class="absolute w-28 h-28 rounded-full bg-romantic-pink/25 blur-3xl"></div>
+      <!-- Neon Heart Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
+           class="w-28 h-28 text-romantic-pink filter drop-shadow-[0_0_25px_rgba(255,77,128,0.85)] transform hover:scale-105 active:scale-95 transition-transform duration-300">
+        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+      </svg>
     </div>
 
     <h2 class="text-3xl md:text-5xl font-extrabold text-white text-glow-pink leading-tight mb-6">
-      "No matter how far we are,<br>we still share the same moon." 🌙
+      "Every single second,<br>my heart still chooses you." 💖
     </h2>
 
-    <p class="text-purple-300 font-light max-w-xl mx-auto leading-relaxed mb-12">
-      Distance is just a tiny obstacle when compared to the depth of our love. Our days, hours, and minutes might pass in separate cities, but our hearts remain perfectly synchronized.
-    </p>
+
 
     <!-- LIVE STORY COUNTER -->
     <div class="max-w-2xl mx-auto glass-panel border border-romantic-gold/20 rounded-3xl p-6 md:p-8 shadow-2xl relative">
@@ -1113,13 +1019,7 @@
             <span class="text-xs text-amber-300/80 font-mono tracking-[0.3em] uppercase mt-2">✨ A Wish Painted In Time ✨</span>
           </div>
 
-          <!-- Year stamp top-right -->
-          <div class="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-lg text-center pointer-events-none"
-               style="background:rgba(12,8,4,0.88); border:1px solid rgba(212,163,115,0.55)">
-            <span class="text-[10px] text-amber-300/65 uppercase tracking-widest block">Someday</span>
-            <span class="text-2xl font-black text-amber-200 block leading-tight">2055</span>
-            <span class="text-[10px] text-amber-300/45 block">& Always</span>
-          </div>
+
         </div>
 
         <!-- Polaroid label bottom — same style as memory cards -->
@@ -1182,18 +1082,18 @@
 
     <!-- Final Giant Text -->
     <h2 class="text-4xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-romantic-pink to-romantic-gold text-glow-pink tracking-tight uppercase leading-none py-2">
-      Forever Starts<br>With You ❤️
+      Home Is Wherever<br>I'm With You 🏡❤️
     </h2>
 
     <p class="text-lg md:text-2xl text-purple-200/80 font-light max-w-xl mx-auto leading-relaxed px-4">
-      "Every love story is beautiful, but ours is my favorite. Thank you for making my world perfect, Raj."
+      "Every single day, in a hundred small ways, you show me what true love feels like. I'm so lucky to have you, Raj."
     </p>
 
     <!-- Replay Story Button -->
     <div class="pt-8">
       <button (click)="replayStory()" class="px-8 py-4 rounded-full bg-transparent hover:bg-romantic-pink/10 border-2 border-romantic-pink text-romantic-pink hover:text-white font-bold text-base tracking-wider uppercase transition-all duration-300 transform hover:scale-105 active:scale-95 shadow hover:shadow-romantic-pink/30 flex items-center gap-2 mx-auto">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H17" /></svg>
-        Replay Our Story
+        Reminisce Our Love 🕊️❤️
       </button>
     </div>
   </div>
