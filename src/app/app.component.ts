@@ -12,13 +12,6 @@ interface TimelineEvent {
   defaultImage?: string;
 }
 
-interface PhotoGalleryItem {
-  id: number;
-  photoKey: string;
-  caption: string;
-  defaultSvg: string;
-  defaultImage?: string;
-}
 
 @Component({
   selector: 'app-root',
@@ -35,9 +28,9 @@ export class AppComponent implements OnInit, OnDestroy {
   currentTrackIndex = 0;
   audioVolume = 0.5;
   tracks = [
-    { name: 'Beautiful Dream (Piano)', url: 'https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-23.mp3' },
-    { name: 'Tender Affection', url: 'https://assets.mixkit.co/music/preview/mixkit-tender-love-153.mp3' },
-    { name: 'Romantic Serenade', url: 'https://assets.mixkit.co/music/preview/mixkit-dreaming-big-31.mp3' }
+    { name: 'Kehte Hain Khuda Ne (Raabta)', url: 'assets/raabta.mp3' },
+    { name: 'Tender Affection', url: 'assets/tender_affection.mp3' },
+    { name: 'Romantic Serenade', url: 'assets/romantic_serenade.mp3' }
   ];
   showMusicPanel = false;
   customTrackUrl = '';
@@ -53,6 +46,24 @@ export class AppComponent implements OnInit, OnDestroy {
   timelineEvents: TimelineEvent[] = [
     {
       id: 1,
+      title: '✨ The Day Destiny Sat Between Us',
+      date: 'Our First Meeting',
+      text: 'The moment where awkward introductions slowly turned into endless comfort.',
+      photoKey: 'photo_memory_firstmeeting',
+      defaultSvg: 'cafe',
+      defaultImage: 'assets/firstmeeting.png'
+    },
+    {
+      id: 2,
+      title: 'The Moment I Saw You ❤️',
+      date: 'Our Dream Date',
+      text: `That moment felt like a scene straight out of my dreams. 🕊️`,
+      photoKey: 'photo_memory_9',
+      defaultSvg: 'park',
+      defaultImage: 'assets/Gemini_waiting_with_flowers.png'
+    },
+    {
+      id: 3,
       title: '💍 Proposal Moment',
       date: '28 November 2024',
       text: 'The moment our forever started.',
@@ -61,7 +72,7 @@ export class AppComponent implements OnInit, OnDestroy {
       defaultImage: 'assets/ChatGPT_Prapose.png'
     },
     {
-      id: 2,
+      id: 4,
       title: '☕ Cafe Hand-Holding Conversation',
       date: 'Cozy Cafe Date',
       text: 'Some conversations become memories forever.',
@@ -70,7 +81,7 @@ export class AppComponent implements OnInit, OnDestroy {
       defaultImage: 'assets/Gemini_cafe_night.png'
     },
     {
-      id: 3,
+      id: 5,
       title: '🛵 best Hug Ever',
       date: 'Evening Rides',
       text: 'You always felt like home.',
@@ -79,7 +90,7 @@ export class AppComponent implements OnInit, OnDestroy {
       defaultImage: 'assets/hug.png'
     },
     {
-      id: 4,
+      id: 6,
       title: '🍽️ Sharing our fav food - Sizzler at Yanki',
       date: 'Yanki Restaurant',
       text: 'Every meal tasted better with you.',
@@ -88,45 +99,31 @@ export class AppComponent implements OnInit, OnDestroy {
       defaultImage: 'assets/yanki_fav_food.png'
     },
     {
-      id: 5,
+      id: 7,
       title: '🌙 Balcony Relaxing Night',
       date: 'Cozy Midnight Peace',
       text: 'Peace was always beside you.',
       photoKey: 'photo_memory_5',
-      defaultSvg: 'moon'
-    },
-    {
-      id: 6,
-      title: '🚉 Station Surprise',
-      date: 'Station Reunion',
-      text: 'That day I realized how deeply you love me.',
-      photoKey: 'photo_memory_6',
-      defaultSvg: 'station'
-    },
-    {
-      id: 7,
-      title: '🌳 Strolling in Joggers Park',
-      date: 'Sunset Surat Walk',
-      text: 'Even ordinary walks became magical.',
-      photoKey: 'photo_memory_7',
-      defaultSvg: 'park'
+      defaultSvg: 'moon',
+      defaultImage: 'assets/balcony.png'
     },
     {
       id: 8,
-      title: '🥣 Bangalore Breakfast Date',
-      date: 'Poha & Paneer Chilla',
-      text: 'The simplest mornings became special with you.',
-      photoKey: 'photo_memory_8',
-      defaultSvg: 'breakfast'
+      title: '🚉 Station Surprise With Injured Leg',
+      date: 'Station Reunion',
+      text: 'He was waiting for me at the station despite having one injured leg, still smiling and surprising me. That day I realized how deeply you love me.',
+      photoKey: 'photo_memory_6',
+      defaultSvg: 'station',
+      defaultImage: 'assets/injurded.png'
     },
     {
       id: 9,
-      title: '💐 Waiting With Flowers',
-      date: 'Our Dream Date',
-      text: `You looked so incredibly handsome waiting for me... I was just blushing, thinking, 'Oh wow, he is my man!'`,
-      photoKey: 'photo_memory_9',
-      defaultSvg: 'park',
-      defaultImage: 'assets/Gemini_waiting_with_flowers.png'
+      title: '💄 Painting Happiness',
+      date: 'Sweet Makeup Date',
+      text: `Getting ready with the person I love most. He makes my heart blush more than the makeup—not just doing makeup, he's painting happiness on my face. His care feels softer than any blush. 🌸`,
+      photoKey: 'photo_memory_10',
+      defaultSvg: 'cafe',
+      defaultImage: 'assets/makeup.png'
     }
   ];
 
@@ -151,18 +148,18 @@ export class AppComponent implements OnInit, OnDestroy {
     { title: 'Our Memories Together', desc: 'Every late-night call, shared laugh, virtual movie date, and sweet conversation is forever locked in my heart.', icon: 'camera' }
   ];
 
-  // Polaroid Photo Memory Gallery
-  galleryItems: PhotoGalleryItem[] = [
-    { id: 1, photoKey: 'photo_gallery_1', caption: 'Your beautiful eyes that captivate me...', defaultSvg: 'sunset' },
-    { id: 2, photoKey: 'photo_gallery_2', caption: 'The cutest laugh in the world!', defaultSvg: 'laugh' },
-    { id: 3, photoKey: 'photo_gallery_3', caption: 'Our coffee cups sharing warmth...', defaultSvg: 'coffee' },
-    { id: 4, photoKey: 'photo_gallery_4', caption: 'Walks under the golden light...', defaultSvg: 'walk' },
-    { id: 5, photoKey: 'photo_gallery_5', caption: 'Dreaming of our wedding day...', defaultSvg: 'couple' },
-    { id: 6, photoKey: 'photo_gallery_6', caption: 'My favorite picture of us together.', defaultSvg: 'us' }
+  // Romantic Spin Wheel Game & Coupon Locker
+  isSpinning = false;
+  wonCoupon: any = null;
+  claimedCoupons: string[] = [];
+  couponsList = [
+    { id: 'yes_day', name: '🍔 Yes-Day! (I pay for food)', desc: 'A whole day where I say YES to your planned cozy dates and treat you to your favorite meal!' },
+    { id: 'coffee_chat', name: '☕ Midnight Coffee & Chat', desc: 'A cozy midnight video date sharing warm drinks and endless conversations with zero rules!' },
+    { id: 'forehead_kisses', name: '💋 Forehead Kisses & Hugs', desc: 'Good for one million warm hugs and sweet forehead kisses next time we meet!' },
+    { id: 'stargazing', name: '🌙 Romantic Stargazing Call', desc: 'A late-night call where we stargaze together and exchange sweet, romantic secrets.' },
+    { id: 'surprise_gift', name: '🎁 A Secret Surprise Gift', desc: 'Mansi\'s secret choice coupon! Claim this to receive a special package made with love.' },
+    { id: 'pampering', name: '🌸 Infinite Free Pampering', desc: 'A whole day dedicated entirely to pampering you, doing your makeup, and showering you with affection.' }
   ];
-
-  lightboxOpen = false;
-  activePhotoIndex = 0;
 
   // Dictionary of loaded base64 images
   loadedImages: { [key: string]: string } = {};
@@ -173,8 +170,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private counterInterval: any;
 
   // Birthday Special Section
-  countdownActive = false;
-  countdownValue = 0; // Starts from 3, triggers confetti on 0
   cakeCandlesLit = true;
   wishMade = false;
   showWishConfirmation = false;
@@ -212,6 +207,7 @@ Mansi 🌸`;
     this.startLoveCounter();
     this.generateFloatingHeartsArray();
     this.animateStarsBackground();
+    this.loadClaimedCoupons();
   }
 
   ngOnDestroy() {
@@ -295,14 +291,6 @@ Mansi 🌸`;
       const saved = localStorage.getItem(e.photoKey);
       if (saved) {
         this.loadedImages[e.photoKey] = saved;
-      }
-    });
-
-    // Check all gallery keys
-    this.galleryItems.forEach(g => {
-      const saved = localStorage.getItem(g.photoKey);
-      if (saved) {
-        this.loadedImages[g.photoKey] = saved;
       }
     });
   }
@@ -539,43 +527,9 @@ Mansi 🌸`;
     this.counterInterval = setInterval(updateTime, 1000);
   }
 
-  // --- PHOTO GALLERY LIGHTBOX ---
-  openLightbox(index: number) {
-    this.activePhotoIndex = index;
-    this.lightboxOpen = true;
-  }
 
-  closeLightbox() {
-    this.lightboxOpen = false;
-  }
 
-  prevPhoto(event: Event) {
-    event.stopPropagation();
-    this.activePhotoIndex = (this.activePhotoIndex - 1 + this.galleryItems.length) % this.galleryItems.length;
-  }
 
-  nextPhoto(event: Event) {
-    event.stopPropagation();
-    this.activePhotoIndex = (this.activePhotoIndex + 1) % this.galleryItems.length;
-  }
-
-  // --- BIRTHDAY SPECIAL COUNTDOWN & CAKE ---
-  startBirthdayCountdown() {
-    if (this.countdownActive) return;
-    this.countdownActive = true;
-    this.countdownValue = 3;
-
-    const timer = setInterval(() => {
-      this.countdownValue--;
-      if (this.countdownValue === 0) {
-        clearInterval(timer);
-        this.countdownActive = false;
-        
-        // Trigger massive birthday celebration confetti!
-        this.triggerMassiveConfetti();
-      }
-    }, 1000);
-  }
 
   triggerMassiveConfetti() {
     const duration = 5 * 1000;
@@ -620,8 +574,8 @@ Mansi 🌸`;
       this.smokeParticles = [];
     }, 2000);
 
-    // Single confetti pop for the birthday wish!
-    this.triggerSingleConfetti();
+    // Massive confetti explosion for the birthday wish!
+    this.triggerMassiveConfetti();
   }
 
   makeAWish() {
@@ -683,6 +637,63 @@ Mansi 🌸`;
 
   closeMemoryPreview() {
     this.activeMemoryPreview = null;
+  }
+
+  // --- ROMANTIC SPIN WHEEL GAME & COUPON LOCKER ---
+  loadClaimedCoupons() {
+    const saved = localStorage.getItem('claimed_coupons');
+    if (saved) {
+      this.claimedCoupons = JSON.parse(saved);
+    }
+  }
+
+  spinWheel() {
+    if (this.isSpinning) return;
+    this.isSpinning = true;
+    this.wonCoupon = null;
+
+    // Pick a random slice index (0 to 5)
+    const randomIndex = Math.floor(Math.random() * this.couponsList.length);
+    
+    // Slices are 60 degrees. Let's calculate spin.
+    const sliceAngle = 360 / this.couponsList.length;
+    const baseRotations = 1800; // 5 full spins
+    const targetOffset = 360 - (randomIndex * sliceAngle + sliceAngle / 2);
+    const finalAngle = baseRotations + targetOffset;
+
+    gsap.set('.wheel-canvas', { rotation: 0 });
+
+    gsap.to('.wheel-canvas', {
+      rotation: finalAngle,
+      duration: 4,
+      ease: 'power4.out',
+      onComplete: () => {
+        this.isSpinning = false;
+        this.wonCoupon = this.couponsList[randomIndex];
+        this.triggerSingleConfetti();
+        
+        // Trigger sweet confetti spray
+        confetti({
+          particleCount: 50,
+          spread: 80,
+          origin: { y: 0.7 },
+          colors: ['#ff4d80', '#ffd700']
+        });
+      }
+    });
+  }
+
+  claimCoupon(couponId: string) {
+    if (!this.claimedCoupons.includes(couponId)) {
+      this.claimedCoupons.push(couponId);
+      localStorage.setItem('claimed_coupons', JSON.stringify(this.claimedCoupons));
+      this.wonCoupon = null;
+      this.triggerSingleConfetti();
+    }
+  }
+
+  isCouponClaimed(couponId: string): boolean {
+    return this.claimedCoupons.includes(couponId);
   }
 
   // Canvas star background particles

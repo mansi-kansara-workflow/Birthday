@@ -40,7 +40,7 @@
   </div>
 
   <!-- Detailed Music Settings Panel -->
-  <div *ngIf="showMusicPanel" class="absolute right-0 top-14 mt-2 w-80 glass-panel rounded-2xl p-4 border border-romantic-pink/30 shadow-2xl z-50 text-purple-200">
+  <div *ngIf="showMusicPanel" class="absolute right-0 top-14 mt-2 w-[calc(100vw-2rem)] sm:w-80 glass-panel rounded-2xl p-4 border border-romantic-pink/30 shadow-2xl z-50 text-purple-200">
     <div class="flex justify-between items-center mb-3">
       <h3 class="font-bold text-romantic-pink text-glow-pink">Love Playlist</h3>
       <button (click)="showMusicPanel = false" class="text-purple-400 hover:text-white">&times;</button>
@@ -144,7 +144,7 @@
 <section id="google-surprise" class="min-h-screen relative flex flex-col justify-center items-center px-4 py-20 z-10 bg-gradient-to-b from-romantic-darkest via-romantic-purple/10 to-romantic-darkest border-t border-purple-900/10">
   <div class="absolute w-[600px] h-[300px] rounded-full bg-romantic-pink/5 blur-[120px] top-1/3 left-1/2 -translate-x-1/2 -z-10"></div>
 
-  <div class="w-full max-w-2xl glass-panel rounded-3xl p-8 border border-purple-500/20 shadow-2xl relative">
+  <div class="w-full max-w-2xl glass-panel rounded-3xl p-4 sm:p-8 border border-purple-500/20 shadow-2xl relative">
     <div class="absolute top-4 right-4">
       <button (click)="resetGoogleSurprise()" title="Reset search" class="text-purple-400 hover:text-romantic-pink transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H17" /></svg>
@@ -260,7 +260,7 @@
       <div class="absolute top-[40px] left-[90%] w-2 h-2 rounded-full bg-romantic-gold/50 blur-[2px] animate-drift-slow-2 pointer-events-none z-0" style="animation-delay: 1.5s"></div>
 
       <!-- Staggered Layout Grid of Hanging Polaroids -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 md:gap-x-12 gap-y-16 py-8 relative z-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 md:gap-x-14 gap-y-20 py-8 relative z-10">
         
         <!-- Hanging polaroid item -->
         <div *ngFor="let event of timelineEvents; let idx = index; let even = even" 
@@ -268,20 +268,20 @@
              [class.animate-sway-even]="even"
              [class.animate-sway-odd]="!even"
              [ngClass]="'polaroid-wrapper-' + (idx % 8)"
-             class="polaroid-group w-full max-w-[290px] mx-auto flex flex-col items-center relative transition-transform duration-300 select-none">
+             class="polaroid-group w-full max-w-[360px] mx-auto flex flex-col items-center relative transition-transform duration-300 select-none">
           
           <!-- Clothespin: Glowing Heart Clip -->
-          <div class="clothespin-clip absolute top-[-26px] z-30 transition-transform duration-300">
+          <div class="clothespin-clip absolute top-[-30px] z-30 transition-transform duration-300">
             <!-- Heart Clothespin SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-romantic-pink drop-shadow-[0_0_8px_rgba(255,77,128,0.8)]">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-romantic-pink drop-shadow-[0_0_10px_rgba(255,77,128,0.85)]">
               <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
             </svg>
             <!-- Clothespin metallic clip highlight -->
-            <div class="absolute top-2.5 left-3.5 w-1 h-3 bg-purple-950/60 rounded-full"></div>
+            <div class="absolute top-3 left-4.5 w-1 h-3.5 bg-purple-950/60 rounded-full"></div>
           </div>
  
           <!-- The Hanging Polaroid Card -->
-          <div class="polaroid-card-container w-full glass-panel rounded-2xl p-3 border border-purple-500/15 shadow-xl cursor-pointer hover:border-romantic-pink/40 hover:shadow-[0_15px_30px_-10px_rgba(255,77,128,0.3)] flex flex-col">
+          <div class="polaroid-card-container w-full glass-panel rounded-2xl p-4 border border-purple-500/15 shadow-2xl cursor-pointer hover:border-romantic-pink/40 hover:shadow-[0_20px_40px_-10px_rgba(255,77,128,0.35)] flex flex-col">
             <!-- Image Area -->
             <div class="relative w-full aspect-square bg-romantic-darkest rounded-lg overflow-hidden border border-purple-500/10">
               
@@ -301,54 +301,52 @@
                 
                 <!-- Tiny Custom SVG overlay representing the scene -->
                 <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="w-11 h-11 rounded-full bg-romantic-darkest/95 flex items-center justify-center border border-romantic-pink/30 shadow-md">
+                  <div class="w-12 h-12 rounded-full bg-romantic-darkest/95 flex items-center justify-center border border-romantic-pink/30 shadow-md">
                     <!-- Proposal Ring -->
-                    <svg *ngIf="event.defaultSvg === 'ring'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="14" r="5" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 9l-2-3h4l-2 3z" /></svg>
+                    <svg *ngIf="event.defaultSvg === 'ring'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="14" r="5" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 9l-2-3h4l-2 3z" /></svg>
                     <!-- Cozy Cafe -->
-                    <svg *ngIf="event.defaultSvg === 'cafe'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 14a4 4 0 008 0V8H6v6zM14 10h2a2 2 0 010 4h-2M9 5c0-1.5 1-2 1-2" /></svg>
+                    <svg *ngIf="event.defaultSvg === 'cafe'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 14a4 4 0 008 0V8H6v6zM14 10h2a2 2 0 010 4h-2M9 5c0-1.5 1-2 1-2" /></svg>
                     <!-- scooter -->
-                    <svg *ngIf="event.defaultSvg === 'scooter'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="16" r="3" /><circle cx="18" cy="16" r="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 13h10M16 13l2-6" /></svg>
+                    <svg *ngIf="event.defaultSvg === 'scooter'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="16" r="3" /><circle cx="18" cy="16" r="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 13h10M16 13l2-6" /></svg>
                     <!-- Sizzling Platter -->
-                    <svg *ngIf="event.defaultSvg === 'food'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="15" rx="8" ry="3" /><path d="M7 14c0-2 2-3 5-3s5 1 5 3" stroke-linecap="round" /></svg>
+                    <svg *ngIf="event.defaultSvg === 'food'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="15" rx="8" ry="3" /><path d="M7 14c0-2 2-3 5-3s5 1 5 3" stroke-linecap="round" /></svg>
                     <!-- Balcony Starry Moon -->
-                    <svg *ngIf="event.defaultSvg === 'moon'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    <svg *ngIf="event.defaultSvg === 'moon'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
                     <!-- train Station Reunion -->
-                    <svg *ngIf="event.defaultSvg === 'station'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="10" rx="2" /><circle cx="12" cy="13" r="2" /></svg>
+                    <svg *ngIf="event.defaultSvg === 'station'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="10" rx="2" /><circle cx="12" cy="13" r="2" /></svg>
                     <!-- Sunset park -->
-                    <svg *ngIf="event.defaultSvg === 'park'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18c3.314 0 6-2.686 6-6S15.314 6 12 6s-6 2.686-6 6" stroke-linecap="round" /><path d="M4 18h16" stroke-linecap="round" /></svg>
+                    <svg *ngIf="event.defaultSvg === 'park'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18c3.314 0 6-2.686 6-6S15.314 6 12 6s-6 2.686-6 6" stroke-linecap="round" /><path d="M4 18h16" stroke-linecap="round" /></svg>
                     <!-- Breakfast date -->
-                    <svg *ngIf="event.defaultSvg === 'breakfast'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8" /><path d="M9 12h6M12 9v6" stroke-linecap="round" /></svg>
+                    <svg *ngIf="event.defaultSvg === 'breakfast'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-romantic-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8" /><path d="M9 12h6M12 9v6" stroke-linecap="round" /></svg>
                   </div>
                 </div>
 
               </div>
 
               <!-- Interactive Polaroid Hover Overlay -->
-              <div class="polaroid-overlay absolute inset-0 bg-romantic-darkest/75 flex flex-col justify-center items-center p-3 text-center pointer-events-none z-20">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-romantic-pink animate-pulse mb-1 filter drop-shadow-[0_0_8px_rgba(255,77,128,0.7)]">
+              <div class="polaroid-overlay absolute inset-0 bg-romantic-darkest/75 flex flex-col justify-center items-center p-4 text-center pointer-events-none z-20">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-romantic-pink animate-pulse mb-1.5 filter drop-shadow-[0_0_10px_rgba(255,77,128,0.75)]">
                   <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
                 </svg>
-                <span class="font-cursive text-xl text-white text-glow-pink">Open Memory</span>
-                <span class="text-[9px] text-purple-300 font-mono tracking-widest uppercase mt-1">✨ Our Story ✨</span>
+                <span class="font-cursive text-2xl text-white text-glow-pink">Open Memory</span>
+                <span class="text-[10px] text-purple-300 font-mono tracking-widest uppercase mt-1">✨ Our Story ✨</span>
               </div>
 
             </div>
 
             <!-- Polaroid Signature Label -->
-            <div class="text-center pt-2.5 border-t border-purple-500/10 mt-2 select-none flex flex-col items-center">
+            <div class="text-center pt-3.5 border-t border-purple-500/10 mt-3 select-none flex flex-col items-center">
               <!-- Title in beautiful Serif (Playfair Display) -->
-              <span class="text-base font-serif font-bold text-yellow-100/95 tracking-wide group-hover/polaroid-clip:text-romantic-pink transition-colors">
+              <span class="text-lg md:text-xl font-serif font-bold text-yellow-100/95 tracking-wide group-hover/polaroid-clip:text-romantic-pink transition-colors">
                 {{ event.title }}
               </span>
               <!-- Caption in readable Sans (Outfit) with elegant italicized styling -->
-              <span class="text-[12px] font-sans font-light text-purple-200/85 italic mt-1.5 line-clamp-2 max-w-[250px] leading-relaxed">
+              <span class="text-sm font-sans font-light text-purple-200/85 italic mt-2 line-clamp-2 max-w-[320px] leading-relaxed">
                 "{{ event.text }}"
               </span>
             </div>
           </div>
-
         </div>
-
       </div>
 
       <!-- Slide scroll help hints -->
@@ -376,24 +374,24 @@
     
     <!-- Header Details -->
     <div class="flex justify-between items-center border-b border-purple-500/10 pb-3 select-none">
-      <span class="text-xs text-romantic-gold font-bold uppercase tracking-widest font-mono">{{ activeMemoryPreview?.date }}</span>
+      <span class="text-xs text-romantic-gold font-bold uppercase tracking-widest font-mono">{{ activeMemoryPreview.date }}</span>
       <span class="px-2.5 py-0.5 text-[9px] rounded-full bg-romantic-pink/20 text-romantic-pink uppercase font-semibold border border-romantic-pink/30">Memory Card</span>
     </div>
 
     <!-- Card Title -->
-    <h3 class="text-2xl md:text-3xl font-extrabold text-white text-glow-pink tracking-wide">{{ activeMemoryPreview?.title }}</h3>
+    <h3 class="text-2xl md:text-3xl font-extrabold text-white text-glow-pink tracking-wide">{{ activeMemoryPreview.title }}</h3>
 
     <!-- Polaroid Zoom Card Frame -->
     <div class="relative w-full aspect-[4/3] bg-romantic-darkest border border-purple-500/20 rounded-2xl overflow-hidden group/modal-frame shadow-2xl">
       
       <!-- 1. Custom User Photo or Default Image -->
-      <img *ngIf="loadedImages[activeMemoryPreview?.photoKey || ''] || activeMemoryPreview?.defaultImage" 
-           [src]="loadedImages[activeMemoryPreview?.photoKey || ''] || activeMemoryPreview?.defaultImage" 
+      <img *ngIf="loadedImages[activeMemoryPreview.photoKey || ''] || activeMemoryPreview.defaultImage" 
+           [src]="loadedImages[activeMemoryPreview.photoKey || ''] || activeMemoryPreview.defaultImage" 
            class="w-full h-full object-cover transition-transform duration-[3000ms] ease-out group-hover/modal-frame:scale-105" 
            alt="Unclipped Memory photo">
 
       <!-- 2. Cozy Artworks Fallback -->
-      <div *ngIf="!loadedImages[activeMemoryPreview?.photoKey || ''] && !activeMemoryPreview?.defaultImage" class="relative w-full h-full">
+      <div *ngIf="!loadedImages[activeMemoryPreview.photoKey || ''] && !activeMemoryPreview.defaultImage" class="relative w-full h-full">
         <img src="assets/ghibli_romantic_scene.png" 
              class="absolute inset-0 w-full h-full object-cover opacity-75 blur-[0.3px] group-hover/modal-frame:scale-105 transition-transform duration-[3000ms] ease-out" 
              alt="Cozy scene placeholder">
@@ -404,21 +402,21 @@
         <div class="absolute inset-0 flex items-center justify-center">
           <div class="w-16 h-16 rounded-full bg-romantic-darkest/95 flex items-center justify-center border border-romantic-pink/40 shadow-xl">
             <!-- Proposal Ring -->
-            <svg *ngIf="activeMemoryPreview?.defaultSvg === 'ring'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-gold animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="14" r="5" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 9l-2-3h4l-2 3z" /></svg>
+            <svg *ngIf="activeMemoryPreview.defaultSvg === 'ring'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-gold animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="14" r="5" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 9l-2-3h4l-2 3z" /></svg>
             <!-- Cozy Cafe -->
-            <svg *ngIf="activeMemoryPreview?.defaultSvg === 'cafe'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-pink animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 14a4 4 0 008 0V8H6v6zM14 10h2a2 2 0 010 4h-2M9 5c0-1.5 1-2 1-2" /></svg>
+            <svg *ngIf="activeMemoryPreview.defaultSvg === 'cafe'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-pink animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 14a4 4 0 008 0V8H6v6zM14 10h2a2 2 0 010 4h-2M9 5c0-1.5 1-2 1-2" /></svg>
             <!-- scooter -->
-            <svg *ngIf="activeMemoryPreview?.defaultSvg === 'scooter'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-pink animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="16" r="3" /><circle cx="18" cy="16" r="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 13h10M16 13l2-6" /></svg>
+            <svg *ngIf="activeMemoryPreview.defaultSvg === 'scooter'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-pink animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="16" r="3" /><circle cx="18" cy="16" r="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 13h10M16 13l2-6" /></svg>
             <!-- Sizzling Platter -->
-            <svg *ngIf="activeMemoryPreview?.defaultSvg === 'food'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-gold animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="15" rx="8" ry="3" /><path d="M7 14c0-2 2-3 5-3s5 1 5 3" stroke-linecap="round" /></svg>
+            <svg *ngIf="activeMemoryPreview.defaultSvg === 'food'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-gold animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="15" rx="8" ry="3" /><path d="M7 14c0-2 2-3 5-3s5 1 5 3" stroke-linecap="round" /></svg>
             <!-- Balcony Starry Moon -->
-            <svg *ngIf="activeMemoryPreview?.defaultSvg === 'moon'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-gold animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+            <svg *ngIf="activeMemoryPreview.defaultSvg === 'moon'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-gold animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
             <!-- train Station Reunion -->
-            <svg *ngIf="activeMemoryPreview?.defaultSvg === 'station'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-pink animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="10" rx="2" /><circle cx="12" cy="13" r="2" /></svg>
+            <svg *ngIf="activeMemoryPreview.defaultSvg === 'station'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-pink animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="10" rx="2" /><circle cx="12" cy="13" r="2" /></svg>
             <!-- Sunset park -->
-            <svg *ngIf="activeMemoryPreview?.defaultSvg === 'park'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-gold animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18c3.314 0 6-2.686 6-6S15.314 6 12 6s-6 2.686-6 6" stroke-linecap="round" /><path d="M4 18h16" stroke-linecap="round" /></svg>
+            <svg *ngIf="activeMemoryPreview.defaultSvg === 'park'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-gold animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18c3.314 0 6-2.686 6-6S15.314 6 12 6s-6 2.686-6 6" stroke-linecap="round" /><path d="M4 18h16" stroke-linecap="round" /></svg>
             <!-- Breakfast date -->
-            <svg *ngIf="activeMemoryPreview?.defaultSvg === 'breakfast'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-gold animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8" /><path d="M9 12h6M12 9v6" stroke-linecap="round" /></svg>
+            <svg *ngIf="activeMemoryPreview.defaultSvg === 'breakfast'" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-romantic-gold animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8" /><path d="M9 12h6M12 9v6" stroke-linecap="round" /></svg>
           </div>
         </div>
       </div>
@@ -427,7 +425,7 @@
 
     <!-- Cozy Story description -->
     <p class="text-lg md:text-xl font-serif text-yellow-100/95 font-medium italic leading-relaxed text-center border-t border-purple-500/10 pt-4 px-2">
-      "{{ activeMemoryPreview?.text }}"
+      "{{ activeMemoryPreview.text }}"
     </p>
 
     <!-- Close Scrapbook Page Button -->
@@ -503,7 +501,7 @@
     </div>
 
     <!-- UNLOCKED PRIVATE SURPRISE CONTENT -->
-    <div id="voice-surprise-unlocked-panel" *ngIf="voiceSurpriseUnlocked" class="mt-12 glass-panel border border-romantic-gold/30 rounded-3xl p-8 shadow-3xl text-left space-y-6 relative overflow-hidden animate-fade-in">
+    <div id="voice-surprise-unlocked-panel" *ngIf="voiceSurpriseUnlocked" class="mt-12 glass-panel border border-romantic-gold/30 rounded-3xl p-4 sm:p-8 shadow-3xl text-left space-y-6 relative overflow-hidden animate-fade-in">
       <div class="absolute -right-10 -top-10 w-40 h-40 bg-romantic-gold/5 rounded-full blur-2xl"></div>
 
       <div class="flex items-center gap-3 border-b border-romantic-gold/10 pb-4">
@@ -607,93 +605,216 @@
   </div>
 </section>
 
-<!-- ==================== PHOTO MEMORY GALLERY ==================== -->
-<section class="py-24 relative z-10 bg-gradient-to-b from-romantic-darkest via-romantic-purple/5 to-romantic-darkest">
-  <div class="absolute w-[400px] h-[400px] bg-romantic-pink/5 rounded-full blur-[100px] top-1/3 right-10 -z-10 animate-pulse-slow"></div>
+<!-- ==================== SWEET LOVE FORTUNE SPIN-WHEEL & COUPON LOCKER ==================== -->
+<section id="romantic-game" class="py-24 relative z-10 bg-gradient-to-b from-romantic-darkest via-romantic-purple/5 to-romantic-darkest border-t border-purple-900/10">
+  <div class="absolute w-[500px] h-[500px] bg-romantic-pink/5 rounded-full blur-[120px] top-1/4 left-1/4 -z-10 animate-pulse-slow"></div>
 
   <div class="max-w-6xl mx-auto px-4">
     <!-- Header -->
-    <div class="text-center mb-16 space-y-4">
+    <div class="text-center mb-16 space-y-4 select-none">
+      <div class="text-xs text-romantic-gold font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 animate-pulse">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+        </svg>
+        Mini Romantic Birthday Game
+      </div>
       <h2 class="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-romantic-pink to-romantic-gold text-glow-pink">
-        Our Real-Life Polaroid Wall 📸
+        Sweet Love Fortune Wheel 🎡
       </h2>
-      <p class="text-purple-300/80 font-light max-w-xl mx-auto">
-        This special gallery is dedicated entirely to our real-life moments together! Click any polaroid frame to expand it into a full-screen slideshow of our happiest smiles.
+      <p class="text-purple-300/80 font-light max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+        Spin our romantic wheel of fortune to win personalized **Love Coupons** crafted with infinite care by Mansi! Claim them to unlock them in your persistent Coupon Locker below.
       </p>
     </div>
 
-    <!-- Scattered Polaroids Layout -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-      <div *ngFor="let item of galleryItems; let idx = index" 
-           (click)="openLightbox(idx)"
-           class="bg-purple-950/20 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-4 shadow-xl hover:shadow-romantic-pink/20 hover:border-romantic-pink/40 transform hover:-rotate-1 hover:scale-[1.02] transition-all duration-300 cursor-pointer group/polaroid-card">
-        
-        <!-- Polaroid Picture Frame -->
-        <div class="relative aspect-square w-full rounded-lg overflow-hidden bg-romantic-darkest mb-4">
-          <img *ngIf="loadedImages[item.photoKey]" [src]="loadedImages[item.photoKey]" class="w-full h-full object-cover transition-transform duration-500 group-hover/polaroid-card:scale-105" alt="Raj Gallery Picture">
+    <!-- Game Board Layout Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: The Spin Wheel Container (6 Columns) -->
+      <div class="lg:col-span-6 flex flex-col items-center justify-center relative">
+        <div class="relative w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] rounded-full p-2 bg-gradient-to-br from-romantic-gold/40 via-transparent to-romantic-pink/40 shadow-3xl">
           
-          <div *ngIf="!loadedImages[item.photoKey]" class="relative w-full h-full bg-gradient-to-br from-romantic-dark via-romantic-purple/35 to-romantic-darkest flex flex-col items-center justify-center p-6 text-center select-none">
-            <!-- Glowing camera / picture silhouette -->
-            <div class="w-16 h-16 rounded-full bg-romantic-pink/10 border border-romantic-pink/20 flex items-center justify-center mb-3 text-romantic-pink/70 shadow-[0_0_15px_rgba(255,77,128,0.1)]">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
-              </svg>
+          <!-- Golden Tapered Pointer Needle -->
+          <div class="absolute top-[-18px] left-[calc(50%-16px)] z-30 pointer-events-none drop-shadow-[0_0_10px_rgba(255,215,0,0.85)] animate-bounce">
+            <!-- Downward Golden Needle SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-romantic-gold">
+              <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-.53 14.03a.75.75 0 001.06 0l3-3a.75.75 0 10-1.06-1.06l-1.72 1.72V8.25a.75.75 0 00-1.5 0v5.69l-1.72-1.72a.75.75 0 00-1.06 1.06l3 3z" clip-rule="evenodd" />
+            </svg>
+          </div>
+
+          <!-- Wheel Circle Body -->
+          <div class="wheel-canvas w-full h-full rounded-full border-[8px] border-romantic-gold/90 shadow-2xl overflow-hidden relative animate-pulse-slow"
+               style="background: conic-gradient(from 0deg, rgba(255, 77, 128, 0.75) 0deg 60deg, rgba(155, 81, 224, 0.75) 60deg 120deg, rgba(255, 215, 0, 0.75) 120deg 180deg, rgba(224, 17, 95, 0.75) 180deg 240deg, rgba(45, 156, 219, 0.75) 240deg 300deg, rgba(39, 174, 96, 0.75) 300deg 360deg);">
+            
+            <!-- Slice divider lines -->
+            <div class="absolute inset-0 bg-transparent pointer-events-none">
+              <div class="absolute top-0 bottom-0 left-[calc(50%-1px)] w-[2px] bg-romantic-gold/30"></div>
+              <div class="absolute top-[calc(50%-1px)] bottom-[calc(50%-1px)] left-0 right-0 h-[2px] bg-romantic-gold/30 rotate-[60deg] transform origin-center"></div>
+              <div class="absolute top-[calc(50%-1px)] bottom-[calc(50%-1px)] left-0 right-0 h-[2px] bg-romantic-gold/30 rotate-[120deg] transform origin-center"></div>
             </div>
-            <span class="text-xs text-purple-300 font-medium tracking-wide">Our Real Photo Frame 📸</span>
-            <span class="text-[9px] text-purple-400/70 font-mono mt-1 uppercase tracking-widest">Waiting for our picture</span>
+
+            <!-- Absolute Positioned Labels Inside Wheel Slices -->
+            <div *ngFor="let coupon of couponsList; let idx = index" 
+                 class="absolute w-[50%] h-[40px] top-[calc(50%-20px)] left-[50%] transform origin-left-center select-none pointer-events-none text-glow-gold flex items-center justify-end pr-6 text-white font-serif font-black text-xs md:text-sm"
+                 [style.transform]="'rotate(' + (idx * 60 + 30) + 'deg) translateX(10px)'">
+              <span class="text-right tracking-wide flex items-center gap-1">
+                {{ coupon.name.split(' ')[0] }} {{ coupon.name.substring(coupon.name.indexOf(' ') + 1).split('!')[0].split('&')[0] }}
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Pulsing Golden Center Hub Spin Button -->
+          <div class="absolute top-[calc(50%-35px)] left-[calc(50%-35px)] w-[70px] h-[70px] rounded-full bg-gradient-to-br from-romantic-gold via-yellow-400 to-romantic-gold border-[3px] border-white shadow-2xl z-20 flex flex-col items-center justify-center cursor-pointer select-none transition-transform duration-300 hover:scale-110 active:scale-95"
+               (click)="spinWheel()"
+               [class.animate-pulse]="!isSpinning">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-purple-950 drop-shadow-[0_1px_2px_rgba(255,255,255,0.7)]">
+              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+            </svg>
+            <span class="text-[8px] font-sans font-black tracking-widest text-purple-950 uppercase mt-0.5">SPIN</span>
+          </div>
+
+        </div>
+
+        <p class="text-xs text-purple-400 font-mono tracking-wider text-center mt-6 select-none">
+          Click Center SPIN Hub &bull; PERSISTENT LOCALSTORAGE SAVES 💾
+        </p>
+      </div>
+
+      <!-- Right Column: Spin Result / Unlocking Action Card (6 Columns) -->
+      <div class="lg:col-span-6 flex flex-col justify-center items-center">
+        
+        <!-- Case 1: Wheel has spun & won a coupon but hasn't claimed yet -->
+        <div *ngIf="wonCoupon" 
+             class="w-full max-w-md glass-panel rounded-3xl p-6 md:p-8 border border-romantic-gold/30 shadow-3xl flex flex-col items-center text-center space-y-6 animate-scale-up z-10">
+          <div class="w-16 h-16 rounded-full bg-romantic-gold/10 border border-romantic-gold/30 flex items-center justify-center text-romantic-gold shadow-[0_0_20px_rgba(255,215,0,0.25)] animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9 text-romantic-gold">
+              <path fill-rule="evenodd" d="M12.96 5.82a.75.75 0 011.08 0l7.25 7.25a.75.75 0 010 1.08l-7.25 7.25a.75.75 0 11-1.08-1.08l5.96-5.96H3.75a.75.75 0 010-1.5h15.17l-5.96-5.96a.75.75 0 010-1.08z" clip-rule="evenodd" />
+            </svg>
+          </div>
+
+          <div class="space-y-2">
+            <span class="text-[10px] text-romantic-pink font-mono tracking-widest uppercase font-bold">✨ Sweet Reward Won ✨</span>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-white text-glow-pink tracking-wide leading-tight">
+              {{ wonCoupon.name }}
+            </h3>
+          </div>
+
+          <p class="text-sm font-sans font-light text-purple-200/90 leading-relaxed max-w-sm italic">
+            "{{ wonCoupon.desc }}"
+          </p>
+
+          <button (click)="claimCoupon(wonCoupon.id)" 
+                  class="w-full py-3.5 bg-gradient-to-r from-romantic-gold to-yellow-500 hover:from-yellow-500 hover:to-romantic-gold text-purple-950 font-sans font-black text-xs md:text-sm uppercase tracking-widest rounded-full shadow-[0_4px_15px_rgba(255,215,0,0.35)] hover:shadow-[0_6px_20px_rgba(255,215,0,0.55)] transition-all select-none duration-300">
+            🎁 Claim Coupon To Locker
+          </button>
+        </div>
+
+        <!-- Case 2: Spin is in progress -->
+        <div *ngIf="isSpinning" 
+             class="w-full max-w-md glass-panel rounded-3xl p-8 border border-purple-500/10 shadow-2xl flex flex-col justify-center items-center text-center space-y-6">
+          <div class="relative w-16 h-16 flex items-center justify-center">
+            <!-- Spinner Ring -->
+            <div class="absolute inset-0 rounded-full border-4 border-purple-500/10 border-t-romantic-pink animate-spin"></div>
+            <!-- Heart icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-romantic-pink animate-pulse">
+              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+            </svg>
+          </div>
+          <div class="space-y-1">
+            <h4 class="text-lg font-bold text-white uppercase tracking-wider">Spinning Wheel of Love...</h4>
+            <p class="text-xs text-purple-300 font-mono">GSAP physical rotations active</p>
           </div>
         </div>
 
-        <!-- Polaroid Caption -->
-        <div class="text-center font-serif text-sm font-bold text-yellow-100/90 tracking-wide py-2.5 select-none group-hover/polaroid-card:text-romantic-pink transition-colors">
-          {{ item.caption }}
+        <!-- Case 3: Idle / Ready to Spin -->
+        <div *ngIf="!wonCoupon && !isSpinning" 
+             class="w-full max-w-md glass-panel rounded-3xl p-8 border border-purple-500/10 shadow-2xl flex flex-col justify-center items-center text-center space-y-6 select-none animate-fade-in">
+          <div class="w-16 h-16 rounded-full bg-romantic-pink/10 border border-romantic-pink/20 flex items-center justify-center text-romantic-pink animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" class="w-8 h-8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h4 class="text-xl font-bold text-white tracking-wide">Ready For Your Reward! 💖</h4>
+            <p class="text-sm text-purple-200/80 leading-relaxed font-light">
+              Click the center **SPIN** button inside our Love Fortune Wheel to spin. Each spin reveals a wonderful life reward that Mansi promises to fulfill!
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Scrapbook Section: Unlocked Coupon Locker -->
+    <div class="mt-24 border-t border-purple-500/10 pt-16">
+      
+      <!-- Sub-Header -->
+      <div class="text-center mb-12 select-none">
+        <h3 class="text-2xl md:text-3xl font-serif font-bold text-yellow-100/95 tracking-wide flex items-center justify-center gap-2">
+          🎟️ Claimed Love Coupon Locker 🎟️
+        </h3>
+        <p class="text-xs text-purple-300 font-mono uppercase tracking-widest mt-2">
+          Collect all 6 sweet coupons to unlock full lifetime privileges!
+        </p>
+      </div>
+
+      <!-- Coupons locker Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let coupon of couponsList" 
+             [class.grayscale-locker]="!isCouponClaimed(coupon.id)"
+             [class.unlocked-locker]="isCouponClaimed(coupon.id)"
+             class="relative overflow-hidden backdrop-blur-md rounded-2xl p-5 flex flex-col justify-between transition-all duration-500 border">
+          
+          <!-- Background Glitter Overlay for Unlocked Cards -->
+          <div *ngIf="isCouponClaimed(coupon.id)" class="absolute inset-0 bg-gradient-to-br from-romantic-pink/10 via-romantic-purple/5 to-romantic-gold/10 opacity-70 z-0"></div>
+
+          <!-- Lock/Unlock Icon Badge -->
+          <div class="absolute top-4 right-4 z-10">
+            <!-- Unlocked Checkmark Badge -->
+            <span *ngIf="isCouponClaimed(coupon.id)" 
+                  class="px-2 py-0.5 text-[8px] bg-romantic-gold/20 text-romantic-gold border border-romantic-gold/40 rounded-full font-sans font-bold uppercase tracking-widest shadow-md">
+              ✓ CLAIMED
+            </span>
+            <!-- Locked Padlock Badge -->
+            <span *ngIf="!isCouponClaimed(coupon.id)" 
+                  class="px-2 py-0.5 text-[8px] bg-purple-950/40 text-purple-400/60 border border-purple-800/20 rounded-full font-sans font-bold uppercase tracking-widest">
+              🔒 LOCKED
+            </span>
+          </div>
+
+          <!-- Coupon Name & Details -->
+          <div class="space-y-3 z-10 relative">
+            <h4 class="text-base font-serif font-bold tracking-wide transition-colors"
+                [ngClass]="isCouponClaimed(coupon.id) ? 'text-romantic-gold' : 'text-purple-300/50'">
+              {{ coupon.name }}
+            </h4>
+            <p class="text-xs leading-relaxed font-light"
+               [ngClass]="isCouponClaimed(coupon.id) ? 'text-purple-100/90' : 'text-purple-400/40'">
+              {{ coupon.desc }}
+            </p>
+          </div>
+
+          <!-- Bottom Footer Details -->
+          <div class="mt-4 border-t border-purple-500/10 pt-3 flex justify-between items-center z-10 relative select-none">
+            <span class="text-[9px] font-mono tracking-widest uppercase font-bold"
+                  [ngClass]="isCouponClaimed(coupon.id) ? 'text-romantic-pink' : 'text-purple-500/30'">
+              {{ isCouponClaimed(coupon.id) ? 'Active Voucher 🎀' : 'Inactive Segment' }}
+            </span>
+            <span class="text-[8px] text-purple-400 font-serif italic"
+                  [ngClass]="isCouponClaimed(coupon.id) ? 'opacity-100' : 'opacity-0'">
+              Made by Mansi 🌸
+            </span>
+          </div>
+
         </div>
       </div>
+
     </div>
+
   </div>
 </section>
 
-<!-- ==================== CINEMATIC LIGHTBOX MODAL ==================== -->
-<div *ngIf="lightboxOpen" class="fixed inset-0 z-50 bg-black/95 flex flex-col justify-center items-center p-4 animate-fade-in" (click)="closeLightbox()">
-  
-  <!-- Close Button -->
-  <button (click)="closeLightbox()" class="absolute top-6 right-6 text-white/60 hover:text-white text-3xl font-light focus:outline-none">&times;</button>
-  
-  <div class="relative w-full max-w-4xl max-h-[80vh] flex justify-center items-center" (click)="$event.stopPropagation()">
-    <!-- Left Navigation Button -->
-    <button (click)="prevPhoto($event)" class="absolute left-2 md:left-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all select-none z-20">
-      &#10094;
-    </button>
-
-    <!-- Photo Container -->
-    <div class="flex flex-col items-center">
-      <div class="glass-panel p-2 rounded-2xl border border-purple-500/20 max-w-full">
-        <!-- Render Base64 Image -->
-        <img *ngIf="loadedImages[galleryItems[activePhotoIndex].photoKey]" 
-             [src]="loadedImages[galleryItems[activePhotoIndex].photoKey]" 
-             class="max-w-full max-h-[70vh] object-contain rounded-lg shadow-2xl border border-white/10" 
-             alt="Cinematic memory slide">
-        
-        <!-- Render Empty Placeholder if missing -->
-        <div *ngIf="!loadedImages[galleryItems[activePhotoIndex].photoKey]" 
-             class="w-[320px] aspect-square flex flex-col items-center justify-center p-8 bg-purple-950/20 border border-dashed border-purple-500/30 rounded-lg text-center">
-          <p class="text-sm text-purple-300 font-light">Cozy memory placeholder</p>
-        </div>
-      </div>
-      
-      <!-- Caption under Image -->
-      <p class="mt-4 font-serif text-xl md:text-2xl font-bold text-romantic-gold text-glow-gold text-center select-none px-4">
-        {{ galleryItems[activePhotoIndex].caption }}
-      </p>
-    </div>
-
-    <!-- Right Navigation Button -->
-    <button (click)="nextPhoto($event)" class="absolute right-2 md:right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all select-none z-20">
-      &#10095;
-    </button>
-  </div>
-</div>
 
 <!-- ==================== LONG DISTANCE moon & star SECTION ==================== -->
 <section class="py-24 relative overflow-hidden z-10 bg-gradient-to-b from-romantic-darkest via-romantic-purple/5 to-romantic-darkest border-t border-purple-900/10">
@@ -768,45 +889,22 @@
     
     <!-- Title -->
     <div class="space-y-4">
-      <h2 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-romantic-pink to-romantic-gold text-glow-pink tracking-tight">
-        A Special Surprise!
+      <h2 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-romantic-pink to-romantic-gold text-glow-pink tracking-tight select-none">
+        Happy Birthday My Love ❤️
       </h2>
       <p class="text-purple-300/80 font-light max-w-md mx-auto">
-        Raj, click the countdown button to start the grand magical celebration.
+        Make a wish in your heart, then blow out the candles to start our magical celebration!
       </p>
     </div>
 
-    <!-- Countdown Button Block -->
-    <div class="flex justify-center py-6" *ngIf="!countdownActive && countdownValue === 0">
-      <button (click)="startBirthdayCountdown()" class="px-8 py-4 rounded-full bg-gradient-to-r from-romantic-gold to-yellow-500 hover:from-yellow-500 hover:to-romantic-gold text-romantic-darkest font-extrabold text-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,215,0,0.4)] flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        Trigger Countdown
-      </button>
-    </div>
-
-    <!-- Countdown Progress Screens -->
-    <div *ngIf="countdownActive" class="py-8">
-      <div class="relative w-40 h-40 mx-auto rounded-full bg-romantic-pink/15 flex items-center justify-center border border-romantic-pink/30 shadow-[0_0_30px_rgba(255,77,128,0.2)] animate-ping">
-        <span class="text-6xl font-black text-romantic-pink text-glow-pink font-mono select-none">
-          {{ countdownValue }}
-        </span>
-      </div>
-      <p class="text-xs text-purple-300 font-light uppercase tracking-widest mt-6">Preparing the magic...</p>
-    </div>
-
-    <!-- BIRTHDAY CELEBRATION REVEALED -->
-    <div *ngIf="!countdownActive && countdownValue === 0 && !wishMade && !cakeCandlesLit" class="animate-fade-in space-y-8">
-      <h3 class="text-3xl md:text-5xl font-black text-white text-glow-pink select-none uppercase tracking-tight">
-        Happy Birthday My Love ❤️
-      </h3>
-    </div>
-
     <!-- Dynamic Interactive Cake Card -->
-    <div *ngIf="!countdownActive && countdownValue === 0" class="glass-panel border border-purple-500/20 rounded-3xl p-8 max-w-md mx-auto shadow-2xl flex flex-col items-center space-y-8 animate-fade-in">
+    <div class="glass-panel border border-purple-500/20 rounded-3xl p-4 sm:p-8 max-w-md mx-auto shadow-2xl flex flex-col items-center space-y-8 animate-fade-in">
       
       <div class="text-center">
         <span class="text-xs text-romantic-pink font-bold uppercase tracking-wider mb-1 block">Your Birthday Cake</span>
-        <h4 class="text-2xl font-bold text-white">Make A Wish & Blow out!</h4>
+        <h4 class="text-2xl font-bold text-white" *ngIf="cakeCandlesLit">Make a wish & blow them out!</h4>
+        <h4 class="text-2xl font-bold text-romantic-gold text-glow-gold animate-pulse" *ngIf="!cakeCandlesLit && !wishMade">Now make your beautiful wish!</h4>
+        <h4 class="text-2xl font-bold text-romantic-pink text-glow-pink animate-fade-in" *ngIf="wishMade">Your wish is safe in my heart!</h4>
       </div>
 
       <!-- CSS Cake Container -->
@@ -928,6 +1026,146 @@
     </div>
   </div>
 </section>
+
+<!-- ==================== GROWING OLD WITH YOU ==================== -->
+<section class="growing-old-section relative overflow-hidden z-10">
+
+  <!-- Layered atmospheric background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[#0d0810] via-[#1a0e1f] to-[#0a0610] z-0"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(212,163,115,0.14)_0%,transparent_70%)] z-0"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,rgba(255,107,157,0.08)_0%,transparent_60%)] z-0"></div>
+  <div class="absolute inset-0 film-grain-overlay z-0 opacity-25"></div>
+
+  <!-- Golden dust particles -->
+  <div class="golden-dust-1"></div>
+  <div class="golden-dust-2"></div>
+  <div class="golden-dust-3"></div>
+  <div class="golden-dust-4"></div>
+  <div class="golden-dust-5"></div>
+  <div class="golden-dust-6"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 py-20 md:py-28">
+
+    <!-- Fairy-lit wire above -->
+    <div class="absolute top-[110px] left-0 right-0 h-px border-t border-dashed border-romantic-gold/35 pointer-events-none z-0"></div>
+    <div class="absolute top-[108px] left-[25%] w-3 h-3 rounded-full bg-romantic-gold shadow-[0_0_14px_#ffd700,_0_0_28px_rgba(255,215,0,0.7)] animate-pulse pointer-events-none z-0"></div>
+    <div class="absolute top-[108px] left-[50%] w-3 h-3 rounded-full bg-romantic-gold shadow-[0_0_14px_#ffd700,_0_0_28px_rgba(255,215,0,0.7)] animate-pulse pointer-events-none z-0" style="animation-delay:0.7s"></div>
+    <div class="absolute top-[108px] left-[75%] w-3 h-3 rounded-full bg-romantic-gold shadow-[0_0_14px_#ffd700,_0_0_28px_rgba(255,215,0,0.7)] animate-pulse pointer-events-none z-0" style="animation-delay:1.4s"></div>
+
+    <!-- Section label -->
+    <div class="text-center mb-10 space-y-3">
+      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-romantic-gold/40 text-romantic-gold text-xs uppercase tracking-[0.25em] font-bold select-none animate-pulse"
+           style="background:rgba(212,163,115,0.1)">
+        ✨ Imaginary Memory · A Dream I Hold For Us
+      </div>
+      <h2 class="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-400 select-none leading-tight">
+        Growing Old With You 🌿
+      </h2>
+    </div>
+
+    <!-- =============================================
+         GIANT SPECIAL POLAROID CARD
+         (matches memory lane style, but bigger)
+    ============================================= -->
+    <div class="special-polaroid-outer">
+
+      <!-- Glow aura ring behind entire card -->
+      <div class="special-polaroid-aura"></div>
+
+      <!-- Heart Clothespin Clip — golden & big -->
+      <div class="special-clothespin-clip">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffd700"
+             class="w-16 h-16 drop-shadow-[0_0_20px_rgba(255,215,0,0.95)] animate-pulse">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        </svg>
+        <span class="absolute inset-0 rounded-full animate-ping opacity-25"
+              style="background:radial-gradient(circle,rgba(255,215,0,0.45),transparent 70%)"></span>
+      </div>
+
+      <!-- The Giant Polaroid Card -->
+      <div class="special-polaroid-card glass-panel flex flex-col">
+
+        <!-- Image section -->
+        <div class="special-polaroid-img-wrap relative w-full overflow-hidden rounded-2xl">
+
+          <img src="assets/oldisgold.png"
+               alt="Growing Old Together — Our Imaginary Memory"
+               class="special-polaroid-img w-full h-full object-cover object-top" />
+
+          <!-- Warm vignette -->
+          <div class="absolute inset-0 pointer-events-none"
+               style="background:radial-gradient(ellipse at center, transparent 42%, rgba(0,0,0,0.62) 100%)"></div>
+
+          <!-- Gold top & bottom shimmer lines -->
+          <div class="absolute top-0 left-0 right-0 h-1 pointer-events-none"
+               style="background:linear-gradient(90deg,transparent,rgba(255,215,0,0.55),transparent)"></div>
+          <div class="absolute bottom-0 left-0 right-0 h-1 pointer-events-none"
+               style="background:linear-gradient(90deg,transparent,rgba(255,215,0,0.35),transparent)"></div>
+
+          <!-- Hover overlay — same style as memory cards -->
+          <div class="polaroid-overlay absolute inset-0 flex flex-col justify-center items-center p-4 text-center pointer-events-none z-20"
+               style="background:rgba(8,4,18,0.78)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffd700"
+                 class="w-16 h-16 animate-pulse mb-3 drop-shadow-[0_0_20px_rgba(255,215,0,0.9)]">
+              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+            </svg>
+            <span class="text-4xl text-amber-200 text-glow-gold" style="font-family:'Great Vibes',cursive">Our Future</span>
+            <span class="text-xs text-amber-300/80 font-mono tracking-[0.3em] uppercase mt-2">✨ A Wish Painted In Time ✨</span>
+          </div>
+
+          <!-- Year stamp top-right -->
+          <div class="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-lg text-center pointer-events-none"
+               style="background:rgba(12,8,4,0.88); border:1px solid rgba(212,163,115,0.55)">
+            <span class="text-[10px] text-amber-300/65 uppercase tracking-widest block">Someday</span>
+            <span class="text-2xl font-black text-amber-200 block leading-tight">2055</span>
+            <span class="text-[10px] text-amber-300/45 block">& Always</span>
+          </div>
+        </div>
+
+        <!-- Polaroid label bottom — same style as memory cards -->
+        <div class="text-center pt-6 pb-5 px-6 mt-4 flex flex-col items-center gap-4 select-none"
+             style="border-top:1px solid rgba(212,163,115,0.18)">
+
+          <!-- Title -->
+          <span class="text-2xl md:text-3xl font-serif font-bold text-amber-100/95 tracking-wide">
+            Growing Old With You
+          </span>
+
+          <!-- Caption -->
+          <span class="text-base md:text-lg font-light text-purple-200/80 italic leading-relaxed max-w-2xl">
+            "Still holding hands, still choosing each other — every single day."
+          </span>
+
+          <!-- Wish pills row -->
+          <div class="special-wish-pills">
+            <span class="special-wish-pill">🌅 Morning Tea Together</span>
+            <span class="special-wish-pill">🏡 Our Little Home</span>
+            <span class="special-wish-pill">🌿 Garden Evenings</span>
+            <span class="special-wish-pill">✨ Still Falling For You</span>
+          </div>
+
+          <!-- Divider -->
+          <div class="flex items-center gap-3 w-full max-w-sm">
+            <div class="flex-1 h-px" style="background:linear-gradient(90deg,transparent,rgba(212,163,115,0.45))"></div>
+            <span style="color:rgba(255,77,128,0.8); animation:heartbeat 2s ease-in-out infinite; display:inline-block">❤</span>
+            <div class="flex-1 h-px" style="background:linear-gradient(90deg,rgba(212,163,115,0.45),transparent)"></div>
+          </div>
+
+          <!-- Love quote -->
+          <p class="text-amber-200/85 italic leading-relaxed max-w-2xl"
+             style="font-family:'Great Vibes',cursive; font-size:clamp(1.2rem,2.5vw,1.7rem)">
+            "I don't just want to be your love story today — I want to be the one you reach for in the dark at 80, the one you come home to, always."
+          </p>
+
+          <span class="text-sm text-romantic-gold/65 tracking-widest italic">— With all my heart, Mansi 🌸</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- ==================== FINAL ENDING SCREEN ==================== -->
 <section class="min-h-screen relative flex flex-col justify-center items-center px-4 py-20 overflow-hidden z-10 bg-gradient-to-t from-romantic-darkest via-romantic-purple/30 to-romantic-darkest border-t border-purple-900/10">
